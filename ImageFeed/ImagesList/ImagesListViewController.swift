@@ -17,7 +17,6 @@ class ImagesListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.contentInset = UIEdgeInsets(top: 12, left: 0, bottom: 12, right: 0)
-//        tableView.layer.addSublayer(gradient)
     }
     
     private lazy var dateFormatter: DateFormatter = {
@@ -26,19 +25,6 @@ class ImagesListViewController: UIViewController {
         formatter.timeStyle = .none
         return formatter
     }()
-    
-//    private lazy var gradient: CAGradientLayer = {
-//        let gradient = CAGradientLayer()
-//        gradient.type = .axial
-//        gradient.colors = [
-//            UIColor.black.cgColor,
-//            UIColor.white.cgColor,
-//        ]
-//        gradient.startPoint = CGPoint(x: 0.0, y: 0.5)
-//        gradient.endPoint = CGPoint(x: 1.0, y: 0.5)
-//        return gradient
-//    }()
-
 }
 
 
