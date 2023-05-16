@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "person.crop.rectangle.stack.fill.png",
+      "filename" : "tab_editorial_active.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "person.crop.rectangle.stack.fill@2x.png",
+      "filename" : "tab_editorial_active@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "person.crop.rectangle.stack.fill@3x.png",
+      "filename" : "tab_editorial_active@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
