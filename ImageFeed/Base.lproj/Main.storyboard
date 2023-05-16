@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="V5k-Vg-Q9r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oX3-SA-D9Y">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment version="4864" identifier="iOS"/>
@@ -99,6 +99,35 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="79.710144927536234" y="-281.25"/>
+        </scene>
+        <!--Single Image View Controller-->
+        <scene sceneID="yWR-Ve-u94">
+            <objects>
+                <viewController id="oX3-SA-D9Y" customClass="SingleImageViewController" customModule="ImageFeed" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="UYX-Cv-lap">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="0" translatesAutoresizingMaskIntoConstraints="NO" id="WDa-2o-2cc">
+                                <rect key="frame" x="0.0" y="48" width="414" height="814"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="HLV-xa-Kf4"/>
+                        <color key="backgroundColor" name="YP Black (iOS)"/>
+                        <constraints>
+                            <constraint firstItem="WDa-2o-2cc" firstAttribute="top" secondItem="HLV-xa-Kf4" secondAttribute="top" id="SY2-Wl-Rn4"/>
+                            <constraint firstItem="HLV-xa-Kf4" firstAttribute="bottom" secondItem="WDa-2o-2cc" secondAttribute="bottom" id="VeT-BZ-09I"/>
+                            <constraint firstItem="HLV-xa-Kf4" firstAttribute="trailing" secondItem="WDa-2o-2cc" secondAttribute="trailing" id="gR7-Pc-Sim"/>
+                            <constraint firstItem="WDa-2o-2cc" firstAttribute="leading" secondItem="HLV-xa-Kf4" secondAttribute="leading" id="raO-l2-Y1o"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="WDa-2o-2cc" id="Tfc-OK-T8c"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nRh-Us-xct" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="958" y="-281"/>
         </scene>
         <!--Profile-->
         <scene sceneID="ADc-3s-gcg">
