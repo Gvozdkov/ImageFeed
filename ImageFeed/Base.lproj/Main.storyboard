@@ -83,7 +83,7 @@
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" name="YP Black (iOS)"/>
+                        <color key="backgroundColor" red="0.10196078431372549" green="0.10588235294117647" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="rjf-3J-d2o" secondAttribute="bottom" id="95b-ZJ-gtf"/>
                             <constraint firstItem="rjf-3J-d2o" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="EgT-93-XOC"/>
@@ -129,7 +129,19 @@
                                     <outlet property="delegate" destination="oX3-SA-D9Y" id="oQG-Hs-yRh"/>
                                 </connections>
                             </scrollView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ADt-8w-OtD">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="enz-rS-8l9" userLabel="ShareBotton">
+                                <rect key="frame" x="182" y="795" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="RKr-Y8-MNF"/>
+                                    <constraint firstAttribute="width" constant="50" id="kRr-yd-WmM"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="Sharing"/>
+                                <connections>
+                                    <action selector="didTapShareBotton:" destination="oX3-SA-D9Y" eventType="touchUpInside" id="1Xu-gw-X8K"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ADt-8w-OtD" userLabel="BackButton">
                                 <rect key="frame" x="8" y="8" width="48" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="H44-Tb-CLV"/>
@@ -143,11 +155,13 @@
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="HLV-xa-Kf4"/>
-                        <color key="backgroundColor" name="YP Black (iOS)"/>
+                        <color key="backgroundColor" red="0.10196078431372549" green="0.10588235294117647" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="enz-rS-8l9" secondAttribute="bottom" constant="51" id="1tt-pF-Y4W"/>
                             <constraint firstAttribute="bottom" secondItem="BAK-ai-0bT" secondAttribute="bottom" id="3yK-df-tWW"/>
                             <constraint firstItem="BAK-ai-0bT" firstAttribute="top" secondItem="UYX-Cv-lap" secondAttribute="top" constant="1" id="5Y1-WC-6aV"/>
                             <constraint firstItem="ADt-8w-OtD" firstAttribute="top" secondItem="HLV-xa-Kf4" secondAttribute="top" constant="8" id="5gk-nw-bhA"/>
+                            <constraint firstItem="enz-rS-8l9" firstAttribute="centerX" secondItem="HLV-xa-Kf4" secondAttribute="centerX" id="H1x-PJ-sGM"/>
                             <constraint firstItem="ADt-8w-OtD" firstAttribute="leading" secondItem="HLV-xa-Kf4" secondAttribute="leading" constant="8" id="af9-vc-0rN"/>
                             <constraint firstItem="HLV-xa-Kf4" firstAttribute="trailing" secondItem="BAK-ai-0bT" secondAttribute="trailing" id="mwc-gD-O9r"/>
                             <constraint firstItem="BAK-ai-0bT" firstAttribute="leading" secondItem="HLV-xa-Kf4" secondAttribute="leading" id="tfC-vU-fle"/>
@@ -212,7 +226,7 @@
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="7tF-lH-ayc"/>
-                        <color key="backgroundColor" red="0.1019607843" green="0.1058823529" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.10196078431372549" green="0.10588235294117647" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="8Uy-Gn-bTa" firstAttribute="leading" secondItem="Nwm-se-ppF" secondAttribute="leading" id="7J3-Cu-emC"/>
                             <constraint firstItem="ENv-87-fZA" firstAttribute="leading" secondItem="7tF-lH-ayc" secondAttribute="leading" constant="16" id="9yy-V6-BOY"/>
@@ -251,7 +265,7 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="GIh-wk-YkF">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.10196078431372549" green="0.10588235294117647" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="selectedImageTintColor">
                             <string key="name">
 YP White (iOS)</string>
@@ -273,6 +287,7 @@ YP White (iOS)</string>
     <resources>
         <image name="0" width="200" height="132"/>
         <image name="Avatar " width="70" height="70"/>
+        <image name="Sharing" width="50" height="50"/>
         <image name="chevron.backward" width="9" height="16"/>
         <image name="like_button_on" width="42" height="42"/>
         <image name="logout_button" width="20" height="22"/>
