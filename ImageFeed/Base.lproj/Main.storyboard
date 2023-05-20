@@ -113,7 +113,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BAK-ai-0bT">
                                 <rect key="frame" x="0.0" y="1" width="414" height="895"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="414" placeholderIntrinsicHeight="414" image="0" translatesAutoresizingMaskIntoConstraints="NO" id="WDa-2o-2cc">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="414" placeholderIntrinsicHeight="414" image="0" translatesAutoresizingMaskIntoConstraints="NO" id="WDa-2o-2cc" userLabel="Image View">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="414"/>
                                     </imageView>
                                 </subviews>
@@ -138,7 +138,7 @@
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" image="chevron.backward"/>
                                 <connections>
-                                    <action selector="didTapBackButton:" destination="oX3-SA-D9Y" eventType="touchUpInside" id="53x-K5-ybV"/>
+                                    <action selector="didTapBackButton:" destination="oX3-SA-D9Y" eventType="touchUpInside" id="rwg-iP-W9P"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -155,7 +155,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="YkF-i8-unW"/>
                     <connections>
-                        <outlet property="imageView" destination="WDa-2o-2cc" id="Tfc-OK-T8c"/>
+                        <outlet property="imageView" destination="WDa-2o-2cc" id="0go-HT-7Hw"/>
+                        <outlet property="scrollView" destination="BAK-ai-0bT" id="aRr-3L-Acb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nRh-Us-xct" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

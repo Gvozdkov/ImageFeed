@@ -9,7 +9,7 @@ import UIKit
 
 final class ImagesListViewController: UIViewController {
     
-    @IBOutlet var tableView: UITableView!
+    @IBOutlet private var tableView: UITableView!
     
     private let photosNames: [String] = Array(0..<20).map{ "\($0)" }
     
@@ -31,16 +31,16 @@ final class ImagesListViewController: UIViewController {
     }()
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-         if segue.identifier == ShowSingleImageSegueIdentifier {
-             let viewController = segue.destination as! SingleImageViewController
-             let indexPath = sender as! IndexPath
-             let image = UIImage(named: photosNames[indexPath.row])
-             _ = viewController.view
-             viewController.imageView.image = image
-         } else {
-             super.prepare(for: segue, sender: sender)
-         }
-     }
+        if segue.identifier == ShowSingleImageSegueIdentifier {
+            let viewController = segue.destination as! SingleImageViewController
+            let indexPath = sender as! IndexPath
+            let image = UIImage(named: photosNames[indexPath.row])
+            viewController.image = image
+        } else {
+            super.prepare(for: segue, sender: sender)
+        }
+    }
+
 }
 
 
