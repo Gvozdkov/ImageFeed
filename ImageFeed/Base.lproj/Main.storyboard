@@ -184,75 +184,10 @@
                     <view key="view" contentMode="scaleToFill" id="lCC-J0-tE6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Avatar " translatesAutoresizingMaskIntoConstraints="NO" id="ENv-87-fZA" userLabel="Avatar Image View">
-                                <rect key="frame" x="16" y="80" width="70" height="70"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="70" id="2my-su-Ybg"/>
-                                    <constraint firstAttribute="width" constant="70" id="CbO-vG-DoM"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="35"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Екатерина Новикова" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nwm-se-ppF" userLabel="Name Label">
-                                <rect key="frame" x="16" y="158" width="382" height="27.5"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="23"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RsF-sd-rcG" userLabel="Logout Button">
-                                <rect key="frame" x="378" y="103" width="20" height="22"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" image="logout_button"/>
-                                <connections>
-                                    <action selector="didTapLogoutButton:" destination="867-dd-V62" eventType="touchUpInside" id="mnA-JK-YLr"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@ekaterina_nov" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Uy-Gn-bTa" userLabel="Login Name Label">
-                                <rect key="frame" x="16" y="193.5" width="382" height="16"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <color key="textColor" red="0.68235294120000001" green="0.68627450980000004" blue="0.70588235290000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello, World!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zbO-GX-EmK" userLabel="Description Label">
-                                <rect key="frame" x="16" y="217.5" width="382" height="16"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="7tF-lH-ayc"/>
                         <color key="backgroundColor" red="0.10196078431372549" green="0.10588235294117647" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        <constraints>
-                            <constraint firstItem="8Uy-Gn-bTa" firstAttribute="leading" secondItem="Nwm-se-ppF" secondAttribute="leading" id="7J3-Cu-emC"/>
-                            <constraint firstItem="ENv-87-fZA" firstAttribute="leading" secondItem="7tF-lH-ayc" secondAttribute="leading" constant="16" id="9yy-V6-BOY"/>
-                            <constraint firstItem="Nwm-se-ppF" firstAttribute="top" secondItem="ENv-87-fZA" secondAttribute="bottom" constant="8" id="Buf-MR-GmB"/>
-                            <constraint firstItem="ENv-87-fZA" firstAttribute="top" secondItem="7tF-lH-ayc" secondAttribute="top" constant="32" id="IfW-Vv-iOx"/>
-                            <constraint firstItem="RsF-sd-rcG" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ENv-87-fZA" secondAttribute="trailing" id="IvQ-r8-NZm"/>
-                            <constraint firstItem="Nwm-se-ppF" firstAttribute="leading" secondItem="ENv-87-fZA" secondAttribute="leading" id="P0B-74-qUE"/>
-                            <constraint firstItem="zbO-GX-EmK" firstAttribute="top" secondItem="8Uy-Gn-bTa" secondAttribute="bottom" constant="8" id="VZE-Y8-H3H"/>
-                            <constraint firstItem="7tF-lH-ayc" firstAttribute="trailing" secondItem="Nwm-se-ppF" secondAttribute="trailing" constant="16" id="Wst-bt-Piy"/>
-                            <constraint firstItem="8Uy-Gn-bTa" firstAttribute="trailing" secondItem="Nwm-se-ppF" secondAttribute="trailing" id="YV2-zA-2pb"/>
-                            <constraint firstItem="zbO-GX-EmK" firstAttribute="leading" secondItem="Nwm-se-ppF" secondAttribute="leading" id="cLu-2e-fPA"/>
-                            <constraint firstItem="8Uy-Gn-bTa" firstAttribute="top" secondItem="Nwm-se-ppF" secondAttribute="bottom" constant="8" id="hlc-WN-Uqt"/>
-                            <constraint firstItem="RsF-sd-rcG" firstAttribute="top" secondItem="7tF-lH-ayc" secondAttribute="top" constant="55" id="nKu-kT-Rh6"/>
-                            <constraint firstItem="zbO-GX-EmK" firstAttribute="trailing" secondItem="Nwm-se-ppF" secondAttribute="trailing" id="qC1-9M-RwN"/>
-                            <constraint firstItem="7tF-lH-ayc" firstAttribute="trailing" secondItem="RsF-sd-rcG" secondAttribute="trailing" constant="16" id="w8U-jP-OpJ"/>
-                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="tab_profile_active" id="E77-eG-baV"/>
-                    <navigationItem key="navigationItem" id="mRs-EM-jag"/>
-                    <connections>
-                        <outlet property="avatarImageView" destination="ENv-87-fZA" id="XeO-qe-0b0"/>
-                        <outlet property="descriptionLabel" destination="zbO-GX-EmK" id="Qn7-zk-IZP"/>
-                        <outlet property="loginNameLabel" destination="8Uy-Gn-bTa" id="fbd-9K-pf8"/>
-                        <outlet property="logoutButton" destination="RsF-sd-rcG" id="ljw-sC-vZF"/>
-                        <outlet property="nameLabel" destination="Nwm-se-ppF" id="Fqt-sv-u0z"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="51X-Z5-5fQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -286,11 +221,9 @@ YP White (iOS)</string>
     </scenes>
     <resources>
         <image name="0" width="200" height="132"/>
-        <image name="Avatar " width="70" height="70"/>
         <image name="Sharing" width="50" height="50"/>
         <image name="chevron.backward" width="9" height="16"/>
         <image name="like_button_on" width="42" height="42"/>
-        <image name="logout_button" width="20" height="22"/>
         <image name="tab_editorial_active" width="30" height="30"/>
         <image name="tab_profile_active" width="24" height="24"/>
         <namedColor>
