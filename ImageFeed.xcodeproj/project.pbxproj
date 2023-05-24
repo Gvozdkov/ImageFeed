@@ -43,12 +43,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		E7017D8F2A10FA4A00D6EEA9 /* Profel */ = {
+		E7017D8F2A10FA4A00D6EEA9 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
 				E7017D902A10FA6B00D6EEA9 /* ProfileViewController.swift */,
 			);
-			path = Profel;
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		E72475542A0D49C400118192 = {
@@ -72,7 +72,7 @@
 			children = (
 				E72475602A0D49C400118192 /* AppDelegate.swift */,
 				E72475622A0D49C400118192 /* SceneDelegate.swift */,
-				E7017D8F2A10FA4A00D6EEA9 /* Profel */,
+				E7017D8F2A10FA4A00D6EEA9 /* Profile */,
 				E72475742A0D4AC400118192 /* ImagesList */,
 				E7CAF5022A141E80002A44A0 /* SingleImageViewController */,
 				E7CAF4FF2A1385EE002A44A0 /* Main.storyboard */,
