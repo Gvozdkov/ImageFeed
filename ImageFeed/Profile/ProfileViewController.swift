@@ -8,6 +8,12 @@
 import UIKit
 
 final class ProfileViewController: UIViewController {
+
+    private lazy var uIView: UIView = {
+      let view = UIView()
+        view.backgroundColor = UIColor(named: "YP Black")
+        return view
+    }()
    
     private lazy var viewProfileImage: UIImageView = {
         let imageProfile = UIImage(named: "Profile")
@@ -57,9 +63,6 @@ final class ProfileViewController: UIViewController {
 
 private extension ProfileViewController {
     func settingsViewController() {
-        view = UIView()
-        view.backgroundColor = UIColor(named: "YP Black")
-        
         view.addSubview(viewProfileImage)
         view.addSubview(labelNameProfile)
         view.addSubview(loginNameLabel)
