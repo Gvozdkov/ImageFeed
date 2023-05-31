@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="V5k-Vg-Q9r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nsT-PJ-7bB">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment version="4864" identifier="iOS"/>
@@ -218,10 +218,84 @@ YP White (iOS)</string>
             </objects>
             <point key="canvasLocation" x="-2075" y="156"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="qWl-7M-eMO">
+            <objects>
+                <navigationController id="nsT-PJ-7bB" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="tBW-Ts-7EC">
+                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="3gk-cw-v6T" kind="show" id="LBi-yL-qxM"/>
+                        <segue destination="3gk-cw-v6T" kind="relationship" relationship="rootViewController" id="vCe-hS-nK8"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bbQ-Tn-a9k" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1791" y="-993"/>
+        </scene>
+        <!--Auth View Controller-->
+        <scene sceneID="16D-e5-lzy">
+            <objects>
+                <viewController id="3gk-cw-v6T" userLabel="Auth View Controller" customClass="AuthViewController" customModule="ImageFeed" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4e6-cr-gJv">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="886"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0hF-so-x4A">
+                                <rect key="frame" x="16" y="748" width="382" height="48"/>
+                                <color key="backgroundColor">
+                                    <string key="name">
+YP White (iOS)</string>
+                                </color>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="MOY-1u-g2B"/>
+                                </constraints>
+                                <color key="tintColor" name="YP Black"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Войти">
+                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="17"/>
+                                </buttonConfiguration>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="16"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="auth_screen_logo" translatesAutoresizingMaskIntoConstraints="NO" id="X72-sn-gkb">
+                                <rect key="frame" x="177" y="413" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="NHM-g9-zZf"/>
+                                    <constraint firstAttribute="width" constant="60" id="TEB-zY-4r3"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="3so-fW-cqg"/>
+                        <color key="backgroundColor" red="0.10196078431372549" green="0.10588235294117647" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="3so-fW-cqg" firstAttribute="bottom" secondItem="0hF-so-x4A" secondAttribute="bottom" constant="90" id="0nw-VN-dLL"/>
+                            <constraint firstItem="X72-sn-gkb" firstAttribute="centerX" secondItem="3so-fW-cqg" secondAttribute="centerX" id="84b-8E-8QM"/>
+                            <constraint firstItem="3so-fW-cqg" firstAttribute="trailing" secondItem="0hF-so-x4A" secondAttribute="trailing" constant="16" id="Svg-5b-XLB"/>
+                            <constraint firstItem="0hF-so-x4A" firstAttribute="leading" secondItem="3so-fW-cqg" secondAttribute="leading" constant="16" id="sgN-pJ-Bcd"/>
+                            <constraint firstItem="X72-sn-gkb" firstAttribute="centerY" secondItem="3so-fW-cqg" secondAttribute="centerY" id="wxJ-Jh-y6y"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Kgr-pq-wBt"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="q8M-XG-8Em" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-878" y="-992"/>
+        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="LBi-yL-qxM"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="0" width="200" height="132"/>
         <image name="Sharing" width="50" height="50"/>
+        <image name="auth_screen_logo" width="60" height="60"/>
         <image name="chevron.backward" width="9" height="16"/>
         <image name="like_button_on" width="42" height="42"/>
         <image name="tab_editorial_active" width="30" height="30"/>
@@ -230,6 +304,9 @@ YP White (iOS)</string>
             <string key="name">
 YP White (iOS)</string>
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="YP Black">
+            <color red="0.10199999809265137" green="0.10599999874830246" blue="0.13300000131130219" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="YP Black (iOS)">
             <color red="0.10199999809265137" green="0.10599999874830246" blue="0.13300000131130219" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
