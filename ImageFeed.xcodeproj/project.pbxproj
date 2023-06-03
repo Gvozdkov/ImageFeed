@@ -16,6 +16,7 @@
 		E724757C2A0D4B0200118192 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E724757B2A0D4B0200118192 /* LaunchScreen.storyboard */; };
 		E768ED672A2350FE0065ADE3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E768ED662A2350FE0065ADE3 /* Constants.swift */; };
 		E7784BBB2A278CF800461FDA /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7784BBA2A278CF800461FDA /* AuthViewController.swift */; };
+		E7784BBE2A27969200461FDA /* WebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7784BBD2A27969200461FDA /* WebViewViewController.swift */; };
 		E7CAF4FD2A1385EE002A44A0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7CAF4FF2A1385EE002A44A0 /* Main.storyboard */; };
 		E7CAF5012A141ADD002A44A0 /* SingleImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7CAF5002A141ADD002A44A0 /* SingleImageViewController.swift */; };
 /* End PBXBuildFile section */
@@ -32,6 +33,7 @@
 		E724757B2A0D4B0200118192 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E768ED662A2350FE0065ADE3 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E7784BBA2A278CF800461FDA /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		E7784BBD2A27969200461FDA /* WebViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewViewController.swift; sourceTree = "<group>"; };
 		E7CAF4FE2A1385EE002A44A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E7CAF5002A141ADD002A44A0 /* SingleImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleImageViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -102,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				E7784BBA2A278CF800461FDA /* AuthViewController.swift */,
+				E7784BBD2A27969200461FDA /* WebViewViewController.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -192,6 +195,7 @@
 				E7784BBB2A278CF800461FDA /* AuthViewController.swift in Sources */,
 				E768ED672A2350FE0065ADE3 /* Constants.swift in Sources */,
 				E7CAF5012A141ADD002A44A0 /* SingleImageViewController.swift in Sources */,
+				E7784BBE2A27969200461FDA /* WebViewViewController.swift in Sources */,
 				E72475632A0D49C400118192 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
