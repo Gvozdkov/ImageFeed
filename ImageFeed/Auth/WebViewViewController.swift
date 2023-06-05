@@ -10,17 +10,23 @@ import WebKit
 
 fileprivate let UnsplashAuthorizeURLString = "https://unsplash.com/oauth/authorize"
 
+// MARK: - protocol WebViewViewControllerDelegate
+
 protocol WebViewViewControllerDelegate: AnyObject {
     func webViewViewController(_ vc: WebViewViewController, didAuthenticateWithCode code: String)
     func webViewViewControllerDidCancel(_ vc: WebViewViewController)
 }
 
+
+// MARK: - class WebViewViewController
+
 final class WebViewViewController: UIViewController {
     
     @IBOutlet private var webView: WKWebView!
+    @IBOutlet private var progressView: UIProgressView!
     
     weak var delegate: WebViewViewControllerDelegate?
-    
+    //MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,13 +43,28 @@ final class WebViewViewController: UIViewController {
         
         let request = URLRequest(url: url)
         webView.load(request)
+
+        updateProgress()
     }
     
     @IBAction private func didTapBackButton(_ sender: Any) {
         delegate?.webViewViewControllerDidCancel(self)
     }
+    //MARK: - viewDidAppear
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        webView.addObserver(
+            self,
+            forKeyPath: #keyPath(WKWebView.estimatedProgress),
+            options: .new,
+            context: nil
+        )
+        updateProgress()
+    }
 }
 
+
+// MARK: - extension WebViewViewController
 
 extension WebViewViewController: WKNavigationDelegate {
     
@@ -64,7 +85,7 @@ extension WebViewViewController: WKNavigationDelegate {
         if
             let url = navigationAction.request.url,
             let urlComponents = URLComponents(string: url.absoluteString),
-                urlComponents.path == "/oauth/authorize/native",
+            urlComponents.path == "/oauth/authorize/native",
             let items = urlComponents.queryItems,
             let codeItem = items.first(where: { $0.name == "code" })
         {
@@ -72,5 +93,28 @@ extension WebViewViewController: WKNavigationDelegate {
         } else {
             return nil
         }
+    }
+}
+
+extension WebViewViewController {
+    override func observeValue(forKeyPath keyPath: String?,
+                               of object: Any?,
+                               change: [NSKeyValueChangeKey : Any]?,
+                               context: UnsafeMutableRawPointer?
+    ) {
+        if keyPath == #keyPath(WKWebView.estimatedProgress) {
+            updateProgress()
+        } else {
+            super.observeValue(forKeyPath: keyPath,
+                               of: object,
+                               change: change,
+                               context: context
+            )
+        }
+    }
+    
+    private func updateProgress() {
+        progressView.progress = Float(webView.estimatedProgress)
+        progressView.isHidden = fabs(webView.estimatedProgress - 1.0) <= 0.0001
     }
 }

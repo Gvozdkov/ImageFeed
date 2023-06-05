@@ -278,7 +278,7 @@ YP White (iOS)</string>
         <!--Web View View Controller-->
         <scene sceneID="B2k-B1-7D5">
             <objects>
-                <viewController id="rWD-Da-VJP" customClass="WebViewViewController" customModule="Image_Feed" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="rWD-Da-VJP" customClass="WebViewViewController" customModule="ImageFeed" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xZW-6U-rgT">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -303,13 +303,21 @@ YP White (iOS)</string>
                                     <action selector="didTapBackButton:" destination="rWD-Da-VJP" eventType="touchUpInside" id="pha-Jt-WCJ"/>
                                 </connections>
                             </button>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="gtj-DL-9Hj">
+                                <rect key="frame" x="0.0" y="40" width="414" height="4"/>
+                                <color key="progressTintColor" name="YP Black"/>
+                            </progressView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="jub-DH-7Ah"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="gtj-DL-9Hj" firstAttribute="top" secondItem="jub-DH-7Ah" secondAttribute="top" constant="40" id="18b-Q3-u27"/>
                             <constraint firstAttribute="bottom" secondItem="B5d-f6-yJb" secondAttribute="bottom" id="2WX-2D-cES"/>
                             <constraint firstItem="B5d-f6-yJb" firstAttribute="leading" secondItem="xZW-6U-rgT" secondAttribute="leading" id="3lj-XC-tJs"/>
+                            <constraint firstItem="jub-DH-7Ah" firstAttribute="trailing" secondItem="gtj-DL-9Hj" secondAttribute="trailing" id="HYY-Ql-zti"/>
                             <constraint firstAttribute="trailing" secondItem="B5d-f6-yJb" secondAttribute="trailing" id="cvr-3c-DPO"/>
+                            <constraint firstItem="gtj-DL-9Hj" firstAttribute="leading" secondItem="jub-DH-7Ah" secondAttribute="leading" id="dfF-9Y-ybq"/>
+                            <constraint firstItem="B5d-f6-yJb" firstAttribute="leading" secondItem="jub-DH-7Ah" secondAttribute="leading" id="hZp-lV-DVH"/>
                             <constraint firstItem="B5d-f6-yJb" firstAttribute="top" secondItem="xZW-6U-rgT" secondAttribute="top" id="huN-wP-T5b"/>
                             <constraint firstItem="fjn-S9-WQ5" firstAttribute="leading" secondItem="jub-DH-7Ah" secondAttribute="leading" id="ioa-sB-Rac"/>
                             <constraint firstItem="fjn-S9-WQ5" firstAttribute="top" secondItem="jub-DH-7Ah" secondAttribute="top" id="vh3-ic-I8x"/>
@@ -317,12 +325,13 @@ YP White (iOS)</string>
                     </view>
                     <navigationItem key="navigationItem" id="8VR-Su-1NU"/>
                     <connections>
+                        <outlet property="progressView" destination="gtj-DL-9Hj" id="UWf-Ei-WLw"/>
                         <outlet property="webView" destination="B5d-f6-yJb" id="EHw-I0-q1H"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hev-et-v5n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="48" y="-993"/>
+            <point key="canvasLocation" x="47.826086956521742" y="-993.08035714285711"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="qWl-7M-eMO">
