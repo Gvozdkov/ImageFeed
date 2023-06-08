@@ -58,6 +58,7 @@ final class WebViewViewController: UIViewController {
         updateProgress()
     }
     
+    // MARK: - lifestyle
     override func observeValue(forKeyPath keyPath: String?,
                                of object: Any?,
                                change: [NSKeyValueChangeKey : Any]?,
