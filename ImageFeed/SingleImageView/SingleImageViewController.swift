@@ -12,6 +12,8 @@ final class SingleImageViewController: UIViewController {
         didSet {
             guard isViewLoaded else { return }
             imageView.image = image
+            //
+            rescaleAndCenterImageInScrollView(image: image)
         }
     }
     
@@ -43,21 +45,19 @@ final class SingleImageViewController: UIViewController {
         scrollView.setContentOffset(CGPoint(x: x, y: y), animated: false)
     }
     
-    @IBAction private func didTapBackButton(_ sender: Any) {
+    @IBAction private func didTapBackButton() {
         dismiss(animated: true, completion: nil)
     }
     
     @IBAction func didTapShareBotton(_ sender: Any) {
-        let share = UIActivityViewController(
-        activityItems: [image],
-        applicationActivities: nil
-        )
-        present(share, animated: true, completion: nil)
+        let imageShare = [image]
+        let activityViewController = UIActivityViewController(activityItems: imageShare as [Any], applicationActivities: nil)
+        present(activityViewController, animated: true, completion: nil)
     }
 }
-
-extension SingleImageViewController: UIScrollViewDelegate {
-    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
-        imageView
+    
+    extension SingleImageViewController: UIScrollViewDelegate {
+        func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+            imageView
+        }
     }
-}

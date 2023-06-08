@@ -7,14 +7,15 @@
 
 import UIKit
 
+// MARK: - class ProfileViewController
 final class ProfileViewController: UIViewController {
-
+    
     private lazy var uIView: UIView = {
-      let view = UIView()
+        let view = UIView()
         view.backgroundColor = UIColor(named: "YP Black")
         return view
     }()
-   
+    
     private lazy var viewProfileImage: UIImageView = {
         let imageProfile = UIImage(named: "Profile")
         let image = UIImageView(image: imageProfile)
@@ -52,15 +53,15 @@ final class ProfileViewController: UIViewController {
         button.tintColor = UIColor(named: "YP Red")
         return button
     }()
-
+    
+    // MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         settingsViewController()
     }
 }
 
-// MARK: - Settings View Controller
-
+// MARK: - extension 
 private extension ProfileViewController {
     func settingsViewController() {
         view.addSubview(viewProfileImage)
@@ -97,7 +98,6 @@ private extension ProfileViewController {
     
     
     @objc func didTapLogoutButton() { }
-    
 }
 
 
