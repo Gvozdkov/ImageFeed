@@ -88,7 +88,6 @@ final class WebViewController: UIViewController {
 
 // MARK: - extension
 extension WebViewController: WKNavigationDelegate {
-    
     func webView(
         _ webView: WKWebView,
         decidePolicyFor navigationAction: WKNavigationAction,
@@ -108,7 +107,7 @@ extension WebViewController: WKNavigationDelegate {
             let urlComponents = URLComponents(string: url.absoluteString),
             urlComponents.path == "/oauth/authorize/native",
             let items = urlComponents.queryItems,
-            let codeItem = items.first(where: { $0.name == "code" })
+            let codeItem = items.first(where: { $0.name == defaultCode })
         {
             return codeItem.value
         } else {

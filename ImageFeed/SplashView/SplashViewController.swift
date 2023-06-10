@@ -28,6 +28,8 @@ final class SplashViewController: UIViewController {
         setNeedsStatusBarAppearanceUpdate()
     }
     // MARK: - lifestyle
+//
+//    
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
     
     private func switchToTabBarController() {
