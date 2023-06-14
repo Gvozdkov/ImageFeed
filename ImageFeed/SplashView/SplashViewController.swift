@@ -17,7 +17,7 @@ final class SplashViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        if let token = oauth2TokenStorage.token {
+        if let _ = oauth2TokenStorage.token {
             switchToTabBarController()
         } else {
             performSegue(withIdentifier: showWebViewSegueIdentifier, sender: nil)
@@ -61,19 +61,45 @@ extension SplashViewController: AuthViewControllerDelegate {
     }
     
     private func fetchOAuthToken(_ code: String) {
-        oauth2Service.fetchOAuthToken(code) { [weak self] result in
+        oauth2Service.fetchOAuthToken(code: code) { [weak self] result in
             
             guard let self = self else { return }
             switch result {
             case .success:
                 self.switchToTabBarController()
-                ProgressHUD.dismiss()
             case .failure:
-                ProgressHUD.dismiss()
-                // TODO Показать ошибку
-                
+                UIBlockingProgressHUD.dismiss()
             }
+            UIBlockingProgressHUD.dismiss()
         }
     }
 }
+//            switch result {
+//            case .success:
+//                self.switchToTabBarController()
+//                UIBlockingProgressHUD.dismiss()
+//            case .failure:
+//                UIBlockingProgressHUD.dismiss()
+//                // TODO Показать ошибку
+//
+//            }
+//        }
+//    }
+//    private func fetchProfile(token: String) {
+//        profileService.fetchProfile(token) { [weak self] result in
+//            guard let self = self else { return }
+//            DispatchQueue.main.async {
+//                switch result {
+//                case .success:
+//                    ProfileImageService.shared.fetchProfileImageURL(username: (self.profileService.profile?.username)!, token: token) { _ in }
+//                    self.switchToTabBarController()
+//                case .failure:
+//                    self.showError()
+//                    UIBlockingProgressHUD.dismiss()
+//                    self.showNextScreen(withID: "SplashViewController")
+//                }
+//                UIBlockingProgressHUD.dismiss()
+//            }
+//        }
+//    }
 
