@@ -24,6 +24,7 @@ final class WebViewController: UIViewController {
     @IBOutlet private var progressView: UIProgressView!
     
     weak var delegate: WebViewControllerDelegate?
+    private var estimatedProgressObservation: NSKeyValueObservation?
     
     //MARK: - viewDidLoad
     override func viewDidLoad() {
@@ -42,6 +43,14 @@ final class WebViewController: UIViewController {
         
         let request = URLRequest(url: url)
         webView.load(request)
+        
+        estimatedProgressObservation = webView.observe(
+            \.estimatedProgress,
+             options: [],
+             changeHandler: { [weak self] _, _ in
+                 guard let self = self else { return }
+                 self.updateProgress()
+             })
         
         updateProgress()
     }
@@ -76,6 +85,15 @@ final class WebViewController: UIViewController {
     }
     
     private func updateProgress() {
+        if webView.estimatedProgress == 1.0 {
+            progressView.setProgress(1.0, animated: true)
+            UIView.animate(withDuration: 0.3, delay: 0.3, options: .curveEaseOut, animations: {
+                self.progressView.alpha = 0.0
+            }, completion: { (finished) in
+                self.progressView.setProgress(0.0, animated: false)
+                self.progressView.isHidden = true
+            })
+        }
         progressView.setProgress(Float(webView.estimatedProgress), animated: true)
         progressView.isHidden = fabs(webView.estimatedProgress - 1.0) <= 0.0001
     }
@@ -112,6 +130,15 @@ extension WebViewController: WKNavigationDelegate {
             return codeItem.value
         } else {
             return nil
+        }
+    }
+    //?
+    static func clean() {
+        HTTPCookieStorage.shared.removeCookies(since: Date.distantPast)
+        WKWebsiteDataStore.default().fetchDataRecords(ofTypes: WKWebsiteDataStore.allWebsiteDataTypes()) { records in
+            records.forEach { record in
+                WKWebsiteDataStore.default().removeData(ofTypes: record.dataTypes, for: [record], completionHandler: { })
+            }
         }
     }
 }

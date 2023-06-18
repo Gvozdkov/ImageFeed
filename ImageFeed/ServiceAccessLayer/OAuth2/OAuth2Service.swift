@@ -15,6 +15,8 @@ final class OAuth2Service {
     private var lastCode: String?
     private var task: URLSessionTask?
 //    private let token = OAuth2TokenStorage.shared
+    
+//    private let token = OAuth2TokenStorage.shared
 //    static let shared = OAuth2Service()
 //    private let urlSession = URLSession.shared
 //    private (set) var authToken: String? {
@@ -90,18 +92,18 @@ final class OAuth2Service {
 //
 //}
 
-    // MARK: - HTTP Request
-extension URLRequest {
-    static func makeHTTPRequest(
-        path: String,
-        httpMethod: String,
-        baseURL: URL = defaultBaseURL
-    ) -> URLRequest {
-        var request = URLRequest(url: URL(string: path, relativeTo: baseURL)!)
-        request.httpMethod = httpMethod
-        return request
-    }
-}
+//    // MARK: - HTTP Request
+//extension URLRequest {
+//    static func makeHTTPRequest(
+//        path: String,
+//        httpMethod: String,
+//        baseURL: URL = defaultBaseURL
+//    ) -> URLRequest {
+//        var request = URLRequest(url: URL(string: path, relativeTo: baseURL)!)
+//        request.httpMethod = httpMethod
+//        return request
+//    }
+//}
 extension OAuth2Service {
     private func authTokenRequest(code: String) -> URLRequest {
         var urlComponents = URLComponents(string: unsplashAuthorizeTokenURLString)!

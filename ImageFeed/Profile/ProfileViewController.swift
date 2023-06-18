@@ -9,6 +9,13 @@ import UIKit
 
 // MARK: - class ProfileViewController
 final class ProfileViewController: UIViewController {
+    private var profileService = ProfileService.shared
+    private var profileImageServiceObserver: NSObjectProtocol?
+    
+    private var gradientProfileImage: CAGradientLayer!
+    private var gradientNameProfile: CAGradientLayer!
+    private var gradientNameLabel: CAGradientLayer!
+    private var gradientDescriptionLabel: CAGradientLayer!
     
     private lazy var uIView: UIView = {
         let view = UIView()
@@ -58,6 +65,48 @@ final class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         settingsViewController()
+        guard let profile = profileService.profile else {return}
+        updateProfileDetails(profile: profile)
+        
+        profileImageServiceObserver = NotificationCenter.default
+            .addObserver(
+                forName: ProfileImageService.didChangeNotification,
+                object: nil,
+                queue: .main
+            ) { [weak self] _ in
+                guard let self = self else { return }
+                self.updateAvatar()
+            }
+        updateAvatar()
+    }
+    
+    private func updateProfileDetails(profile: Profile) {
+        self.labelNameProfile.text = profile.name
+        self.labelNameLogin.text = profile.login
+        self.labelDescription.text = profile.bio
+        
+        gradientNameLabel.removeFromSuperlayer()
+        gradientNameProfile.removeFromSuperlayer()
+        gradientDescriptionLabel.removeFromSuperlayer()
+        
+    }
+    
+    private func updateAvatar() {
+        guard
+            let profileImageURL = ProfileImageService.shared.avatarURL,
+            let imageUrl = URL(string: profileImageURL)
+        else { return }
+//        let cache = ImageCache.default
+//        cache.clearDiskCache()
+//
+//        let processor = RoundCornerImageProcessor(cornerRadius: 50, backgroundColor: .clear)
+//
+//        viewProfileImage.kf.indicatorType = .activity
+//        viewProfileImage.kf.setImage(with: imageUrl,
+//                              placeholder: UIImage(named: "placeholder.fill"),
+//                              options: [.processor(processor)])
+//        print(imageUrl)
+//        self.gradientProfileImage.removeFromSuperlayer()
     }
 }
 

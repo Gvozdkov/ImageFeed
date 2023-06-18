@@ -2,41 +2,47 @@
 //  ProfileService.swift
 //  ImageFeed
 //
-//  Created by Алексей Гвоздков on 15.06.2023.
+//  Created by Алексей Гвоздков on 17.06.2023.
 //
 
 import Foundation
 
-struct ProfileResult: Codable {
-    let userName, firstName, lastName, bio: String?
+final class ProfileService {
+    private let session = URLSession.shared
+    private var task: URLSessionTask?
+    private var lastToken: String?
+    static let shared = ProfileService()
+    private(set) var profile: Profile?
     
-    enum CodingKeys: String, CodingKey {
-        case userName = "username"
-        case firstName = "first_name"
-        case lastName = "last_name"
-        case bio = "bio"
-    }
-}
-
-struct Profile: Decodable {
-    let userName: String?
-    let name: String?
-    let bio: String?
-    let login: String?
-    
-    init (decoderData: ProfileResult) {
-        self.userName = decoderData.userName
-        self.name = (decoderData.firstName ?? "") + " " + (decoderData.lastName ?? "")
+    func fetchProfile(_ token: String, completion: @escaping (Result<Profile, Error>) -> Void){
+        assert(Thread.isMainThread)
+        task?.cancel()
         
-        self.login = "@" + (decoderData.userName ?? "")
-        self.bio = decoderData.bio
+        let request = self.makeRequest(token: token)
+        let task = self.session.objectTask(for: request) { [weak self]
+            (result: Result<ProfileResult, Error>) in
+            DispatchQueue.main.async {
+                guard let self = self else { return }
+                switch result {
+                case .success(let decodedObject):
+                    let profile = Profile(decodedData: decodedObject)
+                    self.profile = profile
+                    completion(.success(profile))
+                case .failure(let error):
+                    completion(.failure(error))
+                    print("error")
+                    return
+                }
+            }
+        }
+        self.task = task
+        task.resume()
     }
     
-    private enum CodingKeysForProfileResult: String, CodingKey {
-        case userName = "user_name"
-        case firstName = "first_name"
-        case lastName = "last_name"
-        case bio
-        
+    private func makeRequest(token: String) -> URLRequest {
+        guard let url = URL(string: defaultBaseURL.absoluteString + "/me") else { fatalError("Failed to create URL") }
+        var request = URLRequest(url: url)
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        return request
     }
 }

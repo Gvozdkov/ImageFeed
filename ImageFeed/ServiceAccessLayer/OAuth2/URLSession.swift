@@ -13,6 +13,7 @@ private enum NetworkError: Error {
     case urlSessionError
     case codeError
 }
+
 extension URLSession {
     func objectTask<T: Decodable>(
         for request: URLRequest,
