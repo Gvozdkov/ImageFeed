@@ -29,6 +29,7 @@
 		E753439D2A3A851E0036659F /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E753439C2A3A851E0036659F /* Profile.swift */; };
 		E75529C62A43B434001E6722 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = E75529C52A43B434001E6722 /* Kingfisher */; };
 		E75529C92A4465C7001E6722 /* SwiftKeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = E75529C82A4465C7001E6722 /* SwiftKeychainWrapper */; };
+		E75529CD2A449A0C001E6722 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75529CC2A449A0C001E6722 /* TabBarController.swift */; };
 		E768ED672A2350FE0065ADE3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E768ED662A2350FE0065ADE3 /* Constants.swift */; };
 		E7784BBB2A278CF800461FDA /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7784BBA2A278CF800461FDA /* AuthViewController.swift */; };
 		E7784BBE2A27969200461FDA /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7784BBD2A27969200461FDA /* WebViewController.swift */; };
@@ -60,6 +61,7 @@
 		E73D88392A3F9C7E00F21CEE /* AlertPresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPresenterProtocol.swift; sourceTree = "<group>"; };
 		E73D883B2A3F9C9500F21CEE /* AlertPresenterDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPresenterDelegate.swift; sourceTree = "<group>"; };
 		E753439C2A3A851E0036659F /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		E75529CC2A449A0C001E6722 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		E768ED662A2350FE0065ADE3 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E7784BBA2A278CF800461FDA /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		E7784BBD2A27969200461FDA /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 				E7B468C32A2F1C7F004FE60E /* SplashView */,
 				E7784BBC2A278D0000461FDA /* Auth */,
 				E7017D8F2A10FA4A00D6EEA9 /* Profile */,
+				E75529CE2A449A10001E6722 /* TabBarController */,
 				E72475742A0D4AC400118192 /* ImagesList */,
 				E7CAF5022A141E80002A44A0 /* SingleImageView */,
 				E7CAF4FF2A1385EE002A44A0 /* Main.storyboard */,
@@ -151,6 +154,14 @@
 				E73D883B2A3F9C9500F21CEE /* AlertPresenterDelegate.swift */,
 			);
 			path = AlertPresenter;
+			sourceTree = "<group>";
+		};
+		E75529CE2A449A10001E6722 /* TabBarController */ = {
+			isa = PBXGroup;
+			children = (
+				E75529CC2A449A0C001E6722 /* TabBarController.swift */,
+			);
+			path = TabBarController;
 			sourceTree = "<group>";
 		};
 		E7784BBC2A278D0000461FDA /* Auth */ = {
@@ -287,6 +298,7 @@
 				E70F494E2A2F2856007A13CA /* SplashViewController.swift in Sources */,
 				E716CEC82A3DFE5600639608 /* ProfileService.swift in Sources */,
 				E73D88382A3F9C4400F21CEE /* AlertPresenter.swift in Sources */,
+				E75529CD2A449A0C001E6722 /* TabBarController.swift in Sources */,
 				E73D88362A3F9BE500F21CEE /* AlertModel.swift in Sources */,
 				E72475772A0D4AC400118192 /* ImagesListViewController.swift in Sources */,
 				E7784BBB2A278CF800461FDA /* AuthViewController.swift in Sources */,
