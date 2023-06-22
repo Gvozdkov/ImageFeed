@@ -222,7 +222,7 @@ YP White (iOS)</string>
         <!--Auth View Controller-->
         <scene sceneID="16D-e5-lzy">
             <objects>
-                <viewController id="3gk-cw-v6T" userLabel="Auth View Controller" customClass="AuthViewController" customModule="ImageFeed" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AuthViewController" id="3gk-cw-v6T" userLabel="Auth View Controller" customClass="AuthViewController" customModule="ImageFeed" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4e6-cr-gJv">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -283,7 +283,7 @@ YP White (iOS)</string>
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B5d-f6-yJb">
+                            <wkWebView contentMode="scaleToFill" restorationIdentifier="AuthViewController2" translatesAutoresizingMaskIntoConstraints="NO" id="B5d-f6-yJb">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <wkWebViewConfiguration key="configuration">

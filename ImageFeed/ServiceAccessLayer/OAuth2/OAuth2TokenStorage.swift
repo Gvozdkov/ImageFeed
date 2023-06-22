@@ -5,42 +5,45 @@
 //  Created by Алексей Гвоздков on 05.06.2023.
 //
 
-import Foundation
+import SwiftKeychainWrapper
 
-private let userDefaults = UserDefaults.standard
-
+private let keychainStorage = KeychainWrapper.standard
 final class OAuth2TokenStorage {
+    static let shared = OAuth2TokenStorage()
+    
+    private enum Keys: String {
+        case bearerToken
+    }
+    private init() { }
+   
     var token: String? {
         get {
-            userDefaults.string(forKey: "userToken")
+            keychainStorage.string(forKey: Keys.bearerToken.rawValue)
         }
         set {
-            userDefaults.set(newValue, forKey: "userToken")
+            if let token = newValue {
+                keychainStorage.set(token, forKey: Keys.bearerToken.rawValue)
+            } else {
+                keychainStorage.removeObject(forKey: Keys.bearerToken.rawValue)
+            }
         }
+    }
+    
+    func removeAllKeys() {
+        KeychainWrapper.standard.removeAllKeys()
     }
 }
 
-//private let keychainStorage = KeychainWrapper.standard
-//final class OAuth2TokenStorage {
-//    static let shared = OAuth2TokenStorage()
-//    private enum Keys: String {
-//        case bearerToken
-//    }
-//    private init() { }
+
+//private let userDefaults = UserDefaults.standard
 //
+//final class OAuth2TokenStorage {
 //    var token: String? {
 //        get {
-//            keychainStorage.string(forKey: Keys.bearerToken.rawValue)
+//            userDefaults.string(forKey: "userToken")
 //        }
 //        set {
-//            if let token = newValue {
-//                keychainStorage.set(token, forKey: Keys.bearerToken.rawValue)
-//            } else {
-//                keychainStorage.removeObject(forKey: Keys.bearerToken.rawValue)
-//            }
+//            userDefaults.set(newValue, forKey: "userToken")
 //        }
-//    }
-//    func removeAllKeys() {
-//        KeychainWrapper.standard.removeAllKeys()
 //    }
 //}

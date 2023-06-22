@@ -6,11 +6,14 @@
 //
 
 import UIKit
+import Kingfisher
 
 // MARK: - class ProfileViewController
 final class ProfileViewController: UIViewController {
+    
     private var profileService = ProfileService.shared
     private var profileImageServiceObserver: NSObjectProtocol?
+    private(set) var profile: Profile?
     
     private var gradientProfileImage: CAGradientLayer!
     private var gradientNameProfile: CAGradientLayer!
@@ -65,7 +68,7 @@ final class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         settingsViewController()
-        guard let profile = profileService.profile else {return}
+        guard let profile = profileService.profile else { return }
         updateProfileDetails(profile: profile)
         
         profileImageServiceObserver = NotificationCenter.default
@@ -85,9 +88,9 @@ final class ProfileViewController: UIViewController {
         self.labelNameLogin.text = profile.login
         self.labelDescription.text = profile.bio
         
-        gradientNameLabel.removeFromSuperlayer()
-        gradientNameProfile.removeFromSuperlayer()
-        gradientDescriptionLabel.removeFromSuperlayer()
+//        gradientNameLabel.removeFromSuperlayer()
+//        gradientNameProfile.removeFromSuperlayer()
+//        gradientDescriptionLabel.removeFromSuperlayer()
         
     }
     
@@ -96,16 +99,16 @@ final class ProfileViewController: UIViewController {
             let profileImageURL = ProfileImageService.shared.avatarURL,
             let imageUrl = URL(string: profileImageURL)
         else { return }
-//        let cache = ImageCache.default
-//        cache.clearDiskCache()
-//
-//        let processor = RoundCornerImageProcessor(cornerRadius: 50, backgroundColor: .clear)
-//
-//        viewProfileImage.kf.indicatorType = .activity
-//        viewProfileImage.kf.setImage(with: imageUrl,
-//                              placeholder: UIImage(named: "placeholder.fill"),
-//                              options: [.processor(processor)])
-//        print(imageUrl)
+        let cache = ImageCache.default
+        cache.clearDiskCache()
+
+        let processor = RoundCornerImageProcessor(cornerRadius: 50, backgroundColor: .clear)
+
+        viewProfileImage.kf.indicatorType = .activity
+        viewProfileImage.kf.setImage(with: imageUrl,
+                              placeholder: UIImage(named: "placeholder.fill"),
+                              options: [.processor(processor)])
+        print(imageUrl)
 //        self.gradientProfileImage.removeFromSuperlayer()
     }
 }
