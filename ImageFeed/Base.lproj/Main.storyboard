@@ -178,22 +178,6 @@
             </objects>
             <point key="canvasLocation" x="47.826086956521742" y="-234.375"/>
         </scene>
-        <!--Profile-->
-        <scene sceneID="ADc-3s-gcg">
-            <objects>
-                <viewController storyboardIdentifier="ProfileViewController" title="Profile" id="867-dd-V62" customClass="ProfileViewController" customModule="ImageFeed" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="lCC-J0-tE6">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="7tF-lH-ayc"/>
-                        <color key="backgroundColor" red="0.10196078431372549" green="0.10588235294117647" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="" image="tab_profile_active" id="E77-eG-baV"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="51X-Z5-5fQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-830" y="498"/>
-        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="IFo-Au-n8b">
             <objects>
@@ -213,7 +197,7 @@ YP White (iOS)</string>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mBx-D6-7YJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1929" y="128"/>
+            <point key="canvasLocation" x="-1655" y="-234"/>
         </scene>
         <!--Auth View Controller-->
         <scene sceneID="16D-e5-lzy">
@@ -384,7 +368,6 @@ YP White (iOS)</string>
         <image name="nav_back_button" width="9" height="16"/>
         <image name="nav_white_button" width="9" height="16"/>
         <image name="tab_editorial_active" width="30" height="30"/>
-        <image name="tab_profile_active" width="24" height="24"/>
         <namedColor>
             <string key="name">
 YP White (iOS)</string>
