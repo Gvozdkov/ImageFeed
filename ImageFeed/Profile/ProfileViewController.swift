@@ -10,15 +10,17 @@ import Kingfisher
 
 // MARK: - class ProfileViewController
 final class ProfileViewController: UIViewController {
-    
-    private var profileService = ProfileService.shared
     private var profileImageServiceObserver: NSObjectProtocol?
+    private let oAuth2TokenStorage = OAuth2TokenStorage.shared
+    private var profileService = ProfileService.shared
     private(set) var profile: Profile?
     
-    private var gradientProfileImage: CAGradientLayer!
-    private var gradientNameProfile: CAGradientLayer!
-    private var gradientNameLabel: CAGradientLayer!
-    private var gradientDescriptionLabel: CAGradientLayer!
+//    private let animationGradient = AnimationGradientFactory.shared
+//    private var gradientProfileImage: CAGradientLayer!
+//    private var gradientNameProfile: CAGradientLayer!
+//    private var gradientNameLabel: CAGradientLayer!
+//    private var gradientDescriptionLabel: CAGradientLayer!
+//    let gradient = CAGradientLayer()
     
     private lazy var uIView: UIView = {
         let view = UIView()
@@ -59,7 +61,9 @@ final class ProfileViewController: UIViewController {
     private lazy var buttonLogout : UIButton = {
         let imageButton = UIImage(named: "logoutButton")
         var button = UIButton()
-        button = UIButton.systemButton(with: imageButton!, target: self, action: #selector(didTapLogoutButton))
+        button = UIButton.systemButton(with: imageButton!,
+                                       target: self,
+                                       action: #selector(didTapLogoutButton))
         button.tintColor = UIColor(named: "YP Red")
         return button
     }()
@@ -70,16 +74,7 @@ final class ProfileViewController: UIViewController {
         settingsViewController()
         guard let profile = profileService.profile else { return }
         updateProfileDetails(profile: profile)
-        
-        profileImageServiceObserver = NotificationCenter.default
-            .addObserver(
-                forName: ProfileImageService.didChangeNotification,
-                object: nil,
-                queue: .main
-            ) { [weak self] _ in
-                guard let self = self else { return }
-                self.updateAvatar()
-            }
+        updateProfileDetails(profile: profileService.profile!)
         updateAvatar()
     }
     
@@ -88,7 +83,7 @@ final class ProfileViewController: UIViewController {
         self.labelNameLogin.text = profile.login
         self.labelDescription.text = profile.bio
         
-//        gradientNameLabel.removeFromSuperlayer()
+//        guard let gradient = gradientNameLabel?.removeFromSuperlayer() else { return }
 //        gradientNameProfile.removeFromSuperlayer()
 //        gradientDescriptionLabel.removeFromSuperlayer()
         
@@ -100,10 +95,11 @@ final class ProfileViewController: UIViewController {
             let imageUrl = URL(string: profileImageURL)
         else { return }
         let cache = ImageCache.default
+        cache.clearMemoryCache()
         cache.clearDiskCache()
-
+        
         let processor = RoundCornerImageProcessor(cornerRadius: 50, backgroundColor: .clear)
-
+        
         viewProfileImage.kf.indicatorType = .activity
         viewProfileImage.kf.setImage(with: imageUrl,
                               placeholder: UIImage(named: "placeholder.fill"),
@@ -149,7 +145,39 @@ private extension ProfileViewController {
     }
     
     
-    @objc func didTapLogoutButton() { }
+    @objc func didTapLogoutButton() {
+        onLogout()
+    }
 }
 
+extension ProfileViewController {
+    private func onLogout() {
+        let alert = UIAlertController(
+            title: "Пока, пока!",
+            message: "Уверены что хотите выйти?",
+            preferredStyle: .alert
+        )
+        
+        let agreeAction = UIAlertAction(
+            title: "Да",
+            style: .default
+        ) { [weak self] _ in
+            guard let self = self else { return }
+            DispatchQueue.main.async {
+                self.onLogout()
+            }
+        }
+        
+        let dismissAction = UIAlertAction(
+            title: "Нет",
+            style: .default
+        )
+        
+        alert.addAction(agreeAction)
+        alert.addAction(dismissAction)
+        
+        present(alert, animated: true)
+
+    }
+}
 

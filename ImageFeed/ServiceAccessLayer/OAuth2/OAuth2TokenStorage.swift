@@ -4,18 +4,18 @@
 //
 //  Created by Алексей Гвоздков on 05.06.2023.
 //
-
+import Foundation
 import SwiftKeychainWrapper
 
 private let keychainStorage = KeychainWrapper.standard
+
 final class OAuth2TokenStorage {
     static let shared = OAuth2TokenStorage()
-    
     private enum Keys: String {
         case bearerToken
     }
-    private init() { }
-   
+    private init() {}
+    
     var token: String? {
         get {
             keychainStorage.string(forKey: Keys.bearerToken.rawValue)
@@ -28,22 +28,7 @@ final class OAuth2TokenStorage {
             }
         }
     }
-    
     func removeAllKeys() {
         KeychainWrapper.standard.removeAllKeys()
     }
 }
-
-
-//private let userDefaults = UserDefaults.standard
-//
-//final class OAuth2TokenStorage {
-//    var token: String? {
-//        get {
-//            userDefaults.string(forKey: "userToken")
-//        }
-//        set {
-//            userDefaults.set(newValue, forKey: "userToken")
-//        }
-//    }
-//}

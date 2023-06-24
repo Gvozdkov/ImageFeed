@@ -21,3 +21,4 @@ struct UserResult: Codable {
         case profileImage = "profile_image"
     }
 }
+

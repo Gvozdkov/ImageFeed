@@ -13,15 +13,17 @@ final class ProfileImageService {
     private var lastToken: String?
     static let shared = ProfileImageService()
     private(set) var avatarURL: String?
-    static let didChangeNotification = Notification.Name(rawValue: "ProfileImageProviderDidChange")
     
+    static let didChangeNotification = Notification.Name(rawValue: "ProfileImageProviderDidChange")
+
     func fetchProfileImageURL(username: String, token: String?, completion: @escaping (Result<Void, Error>) -> Void){
         assert(Thread.isMainThread)
         if lastToken == token { return }
         task?.cancel()
         lastToken = token
-        guard let token = token else { return }
-        
+        guard let token = token else {
+            return
+        }
         let request = self.makeRequest(username: username, token: token)
         let task = self.session.objectTask(for: request) { [weak self]
             (result: Result<UserResult, Error>) in
@@ -54,3 +56,5 @@ final class ProfileImageService {
         return request
     }
 }
+
+
