@@ -6,19 +6,16 @@
 //
 
 import UIKit
-
+// MARK: - protocol AuthViewControllerDelegate
 protocol AuthViewControllerDelegate : AnyObject {
     func authViewController(_ vc : AuthViewController, didAuthenticateWithCode code: String)
 }
-
+// MARK: - class AuthViewController
 final class AuthViewController: UIViewController {
     private let showWebViewSegueIdentifier = "ShowWebView"
     weak var delegate: AuthViewControllerDelegate?
-    
-    //?
     private let oAuthService = OAuth2Service()
     private let oAuthStorage = OAuth2TokenStorage.shared
-    //
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == showWebViewSegueIdentifier {
@@ -35,7 +32,6 @@ final class AuthViewController: UIViewController {
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
-    
 }
 
 // MARK: - Extension

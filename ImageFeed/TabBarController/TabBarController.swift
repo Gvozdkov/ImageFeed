@@ -22,6 +22,7 @@ final class TabBarController: UITabBarController, UITabBarControllerDelegate {
         )
         self.viewControllers = [imagesListViewController, profileViewController]
     }
+    
     override func viewDidLoad() {
             super.viewDidLoad()
             self.tabBarController?.delegate = self

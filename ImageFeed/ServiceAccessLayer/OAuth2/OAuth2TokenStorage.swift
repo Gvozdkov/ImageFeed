@@ -14,7 +14,7 @@ final class OAuth2TokenStorage {
     private enum Keys: String {
         case bearerToken
     }
-    private init() {}
+    private init() { }
     
     var token: String? {
         get {

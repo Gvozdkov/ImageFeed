@@ -24,7 +24,7 @@ final class ProfileViewController: UIViewController {
     
     private lazy var uIView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor(named: "YP Black")
+        view.backgroundColor = UIColor(named: "ypBlack")
         return view
     }()
     
@@ -38,7 +38,7 @@ final class ProfileViewController: UIViewController {
         let label = UILabel()
         label.text = "Екатерина Новикова"
         label.font = UIFont.systemFont(ofSize: 23)
-        label.textColor = UIColor(named: "YP White")
+        label.textColor = UIColor(named: "ypWhite")
         return label
     }()
     
@@ -46,7 +46,7 @@ final class ProfileViewController: UIViewController {
         let label = UILabel()
         label.text = "@ekaterina_nov"
         label.font = UIFont.systemFont(ofSize: 13)
-        label.textColor = UIColor(named: "YP Gray")
+        label.textColor = UIColor(named: "ypGray")
         return label
     }()
     
@@ -54,7 +54,7 @@ final class ProfileViewController: UIViewController {
         let label = UILabel()
         label.text = "Hello, world!"
         label.font = UIFont.systemFont(ofSize: 13)
-        label.textColor = UIColor(named: "YP White")
+        label.textColor = UIColor(named: "ypWhite")
         return label
     }()
     
@@ -64,7 +64,7 @@ final class ProfileViewController: UIViewController {
         button = UIButton.systemButton(with: imageButton!,
                                        target: self,
                                        action: #selector(didTapLogoutButton))
-        button.tintColor = UIColor(named: "YP Red")
+        button.tintColor = UIColor(named: "ypRed")
         return button
     }()
     
@@ -74,16 +74,17 @@ final class ProfileViewController: UIViewController {
         settingsViewController()
         guard let profile = profileService.profile else { return }
         updateProfileDetails(profile: profile)
-        updateProfileDetails(profile: profileService.profile!)
-        updateAvatar()
+        observeAvatarChanges()
     }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
     
     private func updateProfileDetails(profile: Profile) {
         self.labelNameProfile.text = profile.name
         self.labelNameLogin.text = profile.login
         self.labelDescription.text = profile.bio
         
-//        guard let gradient = gradientNameLabel?.removeFromSuperlayer() else { return }
+//        gradientNameLabel?.removeFromSuperlayer
 //        gradientNameProfile.removeFromSuperlayer()
 //        gradientDescriptionLabel.removeFromSuperlayer()
         
@@ -106,6 +107,19 @@ final class ProfileViewController: UIViewController {
                               options: [.processor(processor)])
         print(imageUrl)
 //        self.gradientProfileImage.removeFromSuperlayer()
+    }
+    
+    private func observeAvatarChanges() {
+        profileImageServiceObserver = NotificationCenter.default
+            .addObserver(
+                forName: ProfileImageService.didChangeNotification,
+                object: nil,
+                queue: .main
+            ) { [weak self] _ in
+                guard let self = self else { return }
+                self.updateAvatar()
+            }
+        updateAvatar()
     }
 }
 

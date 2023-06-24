@@ -12,7 +12,7 @@ struct Profile: Decodable {
     let name: String?
     let bio: String?
     var login: String?
-    
+
     init(decodedData: ProfileResult) {
         self.username = decodedData.username
         self.name = (decodedData.firstName ?? "") + " " + (decodedData.lastName ?? "")
@@ -23,7 +23,7 @@ struct Profile: Decodable {
 
 struct ProfileResult: Codable {
     let username, firstName, lastName, bio: String?
-    
+
     enum CodingKeys: String, CodingKey {
         case username = "username"
         case firstName = "first_name"

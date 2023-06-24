@@ -13,7 +13,7 @@ final class ProfileImageService {
     private var lastToken: String?
     static let shared = ProfileImageService()
     private(set) var avatarURL: String?
-    
+
     static let didChangeNotification = Notification.Name(rawValue: "ProfileImageProviderDidChange")
 
     func fetchProfileImageURL(username: String, token: String?, completion: @escaping (Result<Void, Error>) -> Void){
@@ -48,7 +48,7 @@ final class ProfileImageService {
         self.task = task
         task.resume()
     }
-    
+
     private func makeRequest(username: String, token: String) -> URLRequest {
         guard let url = URL(string: defaultBaseURL.absoluteString + "/users/" + username) else { fatalError("Failed to create URL") }
         var request = URLRequest(url: url)
