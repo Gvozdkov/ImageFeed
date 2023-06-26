@@ -31,7 +31,6 @@ final class ProfileService {
                 case .failure(let error):
                     completion(.failure(error))
                     print("error")
-                    return
                 }
             }
         }

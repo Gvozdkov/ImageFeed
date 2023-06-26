@@ -202,7 +202,7 @@ YP White (iOS)</string>
         <!--Auth View Controller-->
         <scene sceneID="16D-e5-lzy">
             <objects>
-                <viewController storyboardIdentifier="AuthViewController" id="3gk-cw-v6T" userLabel="Auth View Controller" customClass="AuthViewController" customModule="ImageFeed" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AuthViewController" modalPresentationStyle="fullScreen" id="3gk-cw-v6T" userLabel="Auth View Controller" customClass="AuthViewController" customModule="ImageFeed" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4e6-cr-gJv">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

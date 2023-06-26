@@ -12,7 +12,7 @@ final class ImagesListService {
     
     init() {}
     
-    func fetchPhotosNextPage() {
+    func fetchPhotosNextPage(completion: @escaping (Result<Void, Error>) -> Void) {
         assert(Thread.isMainThread)
         if task != nil { return }
         task?.cancel()
@@ -31,19 +31,15 @@ final class ImagesListService {
                 guard let self else { return }
                 switch result {
                 case .success(let photoResult):
-                    var photosArray: [Photo] = []
-                    for photo in photoResult {
-                        let onePhoto = Photo(photoResult: photo)
-                        photosArray.append(onePhoto)
-                    }
-                    self.photos.append(contentsOf: photosArray)
-                    
+                    let photosArray = photoResult.map {
+                        Photo(photoResult: $0) }
                     NotificationCenter.default
                         .post(
                             name: ImagesListService.didChangeNotification,
                             object: self,
                             userInfo: ["photos": self.photos])
                 case .failure(let error):
+                    completion(.failure(error))
                     print(error)
                 }
             }

@@ -16,8 +16,8 @@ struct Photo: Codable {
         self.height = CGFloat(photoResult.height)
         self.createdAt = photoResult.createdAt
         self.welcomeDescription = photoResult.welcomeDescription
-        self.thumbImageURL = photoResult.urls[Urls.CodingKeys.thumbImageURL.rawValue]!
-        self.largeImageURL = photoResult.urls[Urls.CodingKeys.largeImageURL.rawValue]!
+        self.thumbImageURL = photoResult.urls[Urls.CodingKeys.thumbImageURL.rawValue] ?? "thumb"
+        self.largeImageURL = photoResult.urls[Urls.CodingKeys.largeImageURL.rawValue] ?? "full"
         self.isLiked = photoResult.isLiked
     }
 }

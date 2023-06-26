@@ -33,7 +33,7 @@ extension URLSession {
                     return
                 }
             }
-            guard let data = data else { return }
+            guard let data = data else { return completion(.failure(NetworkError.codeError)) }
             do {
                 let decodedObject = try JSONDecoder().decode(T.self, from: data)
                 DispatchQueue.main.async {

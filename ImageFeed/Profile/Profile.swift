@@ -7,10 +7,8 @@
 
 import Foundation
 
-struct Profile: Decodable {
-    let username: String?
-    let name: String?
-    let bio: String?
+struct Profile: Codable {
+    let username, name, bio: String?
     var login: String?
 
     init(decodedData: ProfileResult) {

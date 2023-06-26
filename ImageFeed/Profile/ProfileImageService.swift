@@ -25,24 +25,21 @@ final class ProfileImageService {
             return
         }
         let request = self.makeRequest(username: username, token: token)
-        let task = self.session.objectTask(for: request) { [weak self]
-            (result: Result<UserResult, Error>) in
+        let task = self.session.objectTask(for: request) { [weak self] (result: Result<UserResult, Error>) in
             guard let self = self else { return }
             switch result {
             case .success(let sec):
                 if let image = sec.profileImage?.image {
-                    self.avatarURL = image
+                    avatarURL = image
                     NotificationCenter.default
                         .post(
                             name: ProfileImageService.didChangeNotification,
                             object: self,
                             userInfo: ["URL": image])
                 }
-                completion(.success(()))
-
-            case .failure:
-                self.lastToken = nil
-                return
+            case .failure(let error):
+                completion(.failure(error))
+                print("error")
             }
         }
         self.task = task
