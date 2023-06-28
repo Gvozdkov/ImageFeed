@@ -1,9 +1,11 @@
 import Foundation
 
+// MARK: - struct LikePhotoResult
 struct LikePhotoResult: Decodable {
     let photo: PhotoResult
 }
 
+// MARK: - struct PhotoResult
 struct PhotoResult: Decodable {
     let id: String
     let width: CGFloat
@@ -12,7 +14,7 @@ struct PhotoResult: Decodable {
     let urls: [String: String]
     let createdAt: String?
     let isLiked: Bool
-
+    
     enum CodingKeys: String, CodingKey {
         case id, urls, width, height
         case createdAt = "created_at"

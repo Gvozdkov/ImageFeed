@@ -1,14 +1,8 @@
-//
-//  AlertPresenter.swift
-//  ImageFeed
-//
-//  Created by Алексей Гвоздков on 18.06.2023.
-//
-
 import UIKit
 
 final class AlertPresenter: AlertPresenterProtocol{
     private weak var delegate: UIViewController?
+    
     init(delegate: UIViewController) {
         self.delegate = delegate
     }

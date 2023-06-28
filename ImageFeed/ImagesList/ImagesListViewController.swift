@@ -1,10 +1,3 @@
-//
-//  ViewController.swift
-//  ImageFeed
-//
-//  Created by Алексей Гвоздков on 30.04.2023.
-//
-
 import UIKit
 
 // MARK: - class ImagesListViewController
@@ -22,7 +15,7 @@ final class ImagesListViewController: UIViewController {
         return formatter
     }()
     
-    //MARK: - viewDidLoad
+    //MARK: - lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -41,7 +34,7 @@ final class ImagesListViewController: UIViewController {
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
-
+    
 }
 
 //MARK: - extension

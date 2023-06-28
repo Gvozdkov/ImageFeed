@@ -1,5 +1,6 @@
 import Foundation
 
+// MARK: - class ImagesListService
 final class ImagesListService {
     private let session = URLSession.shared
     private var task: URLSessionTask?
@@ -10,8 +11,7 @@ final class ImagesListService {
     static let didChangeNotification = Notification.Name(rawValue: "ImagesListServiceDidChange")
     private var lastLoadedPage: Int?
     
-    init() {}
-    
+    // MARK: - lifestyle
     func fetchPhotosNextPage(completion: @escaping (Result<Void, Error>) -> Void) {
         assert(Thread.isMainThread)
         if task != nil { return }
@@ -20,7 +20,7 @@ final class ImagesListService {
         let nextPage = lastLoadedPage == nil ? 1 : lastLoadedPage! + 1
         lastLoadedPage = lastLoadedPage == nil ? 1 : nextPage
         
-        var request = URLRequest(url: URL(string: "/photos?page=\(nextPage)&&per_page=10", relativeTo: defaultBaseURL)!)
+        var request = URLRequest(url: URL(string: "/photos?page=\(nextPage)&&per_page=10", relativeTo: APIConstants.baseURL)!)
         request.httpMethod = "GET"
         
         let token = token.token!
@@ -31,7 +31,7 @@ final class ImagesListService {
                 guard let self else { return }
                 switch result {
                 case .success(let photoResult):
-                    let photosArray = photoResult.map {
+                    let _ = photoResult.map {
                         Photo(photoResult: $0) }
                     NotificationCenter.default
                         .post(
@@ -46,17 +46,16 @@ final class ImagesListService {
         }
         task.resume()
     }
-    
-  
 }
 
+// MARK: - extension
 extension ImagesListService {
     func changeLike(photoId: String, isLike: Bool, indexPath: Int, _ completion: @escaping (Result<Photo, Error>) -> Void) {
         
-        var request = URLRequest(url: URL(string: "/photos/\(photoId)/like", relativeTo: defaultBaseURL)!)
+        var request = URLRequest(url: URL(string: "/photos/\(photoId)/like", relativeTo: APIConstants.baseURL) ?? URL(string: "https://unsplash.com")!)
         request.httpMethod = isLike ? "POST" : "DELETE"
         
-        let token = token.token!
+        guard let token = token.token else { return }
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         let session = URLSession.shared
         let task = session.objectTask(for: request) { [weak self] (result: Result<LikePhotoResult, Error>) in

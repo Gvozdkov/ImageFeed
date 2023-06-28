@@ -1,26 +1,22 @@
-//
-//  ProfileViewController.swift
-//  ImageFeed
-//
-//  Created by Алексей Гвоздков on 14.05.2023.
-//
-
 import UIKit
 import Kingfisher
 
 // MARK: - class ProfileViewController
 final class ProfileViewController: UIViewController {
-    private var profileImageServiceObserver: NSObjectProtocol?
-    private let oAuth2TokenStorage = OAuth2TokenStorage.shared
-    private var profileService = ProfileService.shared
-    private(set) var profile: Profile?
     
-//    private let animationGradient = AnimationGradientFactory.shared
-//    private var gradientProfileImage: CAGradientLayer!
-//    private var gradientNameProfile: CAGradientLayer!
-//    private var gradientNameLabel: CAGradientLayer!
-//    private var gradientDescriptionLabel: CAGradientLayer!
-//    let gradient = CAGradientLayer()
+    private var profileImageServiceObserver: NSObjectProtocol?
+    private let storageToken = OAuth2TokenStorage()
+    private let profileService = ProfileService.shared
+    
+    private let oAuth2TokenStorage = OAuth2TokenStorage.shared
+    private (set) var avatarURL: String?
+    
+    private let animationGradient = AnimationGradientFactory.shared
+    private var gradientProfileImage: CAGradientLayer!
+    private var gradientNameProfile: CAGradientLayer!
+    private var gradientNameLabel: CAGradientLayer!
+    private var gradientDescriptionLabel: CAGradientLayer!
+    let gradient = CAGradientLayer()
     
     private lazy var uIView: UIView = {
         let view = UIView()
@@ -31,6 +27,7 @@ final class ProfileViewController: UIViewController {
     private lazy var viewProfileImage: UIImageView = {
         let imageProfile = UIImage(named: "Profile")
         let image = UIImageView(image: imageProfile)
+        image.contentMode = .scaleAspectFill
         return image
     }()
     
@@ -68,64 +65,23 @@ final class ProfileViewController: UIViewController {
         return button
     }()
     
-    // MARK: - viewDidLoad
+    // MARK: - lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         settingsViewController()
+        updateGradient()
         guard let profile = profileService.profile else { return }
+        updateAvatar()
         updateProfileDetails(profile: profile)
         observeAvatarChanges()
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
-    
-    private func updateProfileDetails(profile: Profile) {
-        self.labelNameProfile.text = profile.name
-        self.labelNameLogin.text = profile.login
-        self.labelDescription.text = profile.bio
-        
-//        gradientNameLabel?.removeFromSuperlayer
-//        gradientNameProfile.removeFromSuperlayer()
-//        gradientDescriptionLabel.removeFromSuperlayer()
-        
-    }
-    
-    private func updateAvatar() {
-        guard
-            let profileImageURL = ProfileImageService.shared.avatarURL,
-            let imageUrl = URL(string: profileImageURL)
-        else { return }
-        let cache = ImageCache.default
-        cache.clearMemoryCache()
-        cache.clearDiskCache()
-        
-        let processor = RoundCornerImageProcessor(cornerRadius: 50, backgroundColor: .clear)
-        
-        viewProfileImage.kf.indicatorType = .activity
-        viewProfileImage.kf.setImage(with: imageUrl,
-                              placeholder: UIImage(named: "placeholder.fill"),
-                              options: [.processor(processor)])
-        print(imageUrl)
-//        self.gradientProfileImage.removeFromSuperlayer()
-    }
-    
-    private func observeAvatarChanges() {
-        profileImageServiceObserver = NotificationCenter.default
-            .addObserver(
-                forName: ProfileImageService.didChangeNotification,
-                object: nil,
-                queue: .main
-            ) { [weak self] _ in
-                guard let self = self else { return }
-                self.updateAvatar()
-            }
-        updateAvatar()
-    }
 }
 
-// MARK: - extension 
-private extension ProfileViewController {
-    func settingsViewController() {
+// MARK: - extension
+extension ProfileViewController {
+   private func settingsViewController() {
         view.addSubview(viewProfileImage)
         view.addSubview(labelNameProfile)
         view.addSubview(labelNameLogin)
@@ -159,8 +115,62 @@ private extension ProfileViewController {
     }
     
     
-    @objc func didTapLogoutButton() {
+    @objc private func didTapLogoutButton() {
         onLogout()
+    }
+}
+
+extension ProfileViewController {
+    private func updateGradient() {
+        gradientNameProfile = animationGradient.createGradient(width: 223, height: 23, cornerRadius: 11.5)
+        self.labelNameProfile.layer.addSublayer(gradientNameProfile)
+        
+        gradientNameLabel = animationGradient.createGradient(width: 89, height: 18, cornerRadius: 9)
+        self.labelNameLogin.layer.addSublayer(gradientNameLabel)
+        
+        gradientDescriptionLabel = animationGradient.createGradient(width: 67, height: 18, cornerRadius: 9)
+        self.labelDescription.layer.addSublayer(gradientDescriptionLabel)
+        
+        gradientProfileImage = animationGradient.createGradient(width: 70, height: 70, cornerRadius: 35)
+//        self.viewProfileImage.layer.addSublayer(gradientProfileImage)
+    }
+    
+    private func updateProfileDetails(profile: Profile?) {
+        guard let profile = profileService.profile else { return }
+        labelNameProfile.text = profile.name
+        labelNameLogin.text = profile.loginName
+        labelDescription.text = profile.bio
+        
+        gradientNameLabel?.removeFromSuperlayer()
+        gradientNameProfile?.removeFromSuperlayer()
+        gradientDescriptionLabel?.removeFromSuperlayer()
+    }
+    
+    private func updateAvatar() {
+        guard
+            let profileImageURL = ProfileImageService.shared.avatarURL,
+            let url = URL(string: profileImageURL)
+        else { return self.viewProfileImage.layer.addSublayer(gradientProfileImage) }
+        let processor = RoundCornerImageProcessor(cornerRadius: viewProfileImage.frame.width)
+        viewProfileImage.kf.indicatorType = .activity
+        viewProfileImage.kf.setImage(with: url,
+                              placeholder: UIImage(named: "person.crop.circle.fill.png"),
+                              options: [.processor(processor),.cacheSerializer(FormatIndicatedCacheSerializer.png)])
+        let cache = ImageCache.default
+        cache.clearDiskCache()
+        cache.clearMemoryCache()
+    }
+    
+    private func observeAvatarChanges() {
+        profileImageServiceObserver = NotificationCenter.default
+            .addObserver(
+                forName: ProfileImageService.DidChangeNotification,
+                object: nil,
+                queue: .main
+            ) { [weak self] _ in
+                guard let self = self else { return }
+                self.updateAvatar()
+            }
     }
 }
 

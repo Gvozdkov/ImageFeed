@@ -258,7 +258,7 @@ YP White (iOS)</string>
         <!--Web View Controller-->
         <scene sceneID="B2k-B1-7D5">
             <objects>
-                <viewController id="rWD-Da-VJP" userLabel="Web View Controller" customClass="WebViewController" customModule="ImageFeed" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="rWD-Da-VJP" userLabel="Web View Controller" customClass="WebViewViewController" customModule="ImageFeed" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xZW-6U-rgT">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -1,5 +1,6 @@
 import Foundation
 
+// MARK: - struct Photo
 struct Photo: Codable {
     let id: String
     let width: CGFloat
@@ -21,6 +22,8 @@ struct Photo: Codable {
         self.isLiked = photoResult.isLiked
     }
 }
+
+// MARK: - struct Urls
 struct Urls: Decodable {
     let thumbImageURL: String
     let largeImageURL: String
