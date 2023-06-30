@@ -28,7 +28,6 @@
 		E75AC30A2A46710500E25297 /* AnimationGradientFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75AC3092A46710500E25297 /* AnimationGradientFactory.swift */; };
 		E75AC30F2A46750400E25297 /* ImagesListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75AC30C2A46750400E25297 /* ImagesListService.swift */; };
 		E75AC3102A46750400E25297 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75AC30D2A46750400E25297 /* Photo.swift */; };
-		E75AC3112A46750400E25297 /* PhotoResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75AC30E2A46750400E25297 /* PhotoResult.swift */; };
 		E768ED672A2350FE0065ADE3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E768ED662A2350FE0065ADE3 /* Constants.swift */; };
 		E7784BBB2A278CF800461FDA /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7784BBA2A278CF800461FDA /* AuthViewController.swift */; };
 		E7784BBE2A27969200461FDA /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7784BBD2A27969200461FDA /* WebViewController.swift */; };
@@ -61,7 +60,6 @@
 		E75AC3092A46710500E25297 /* AnimationGradientFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationGradientFactory.swift; sourceTree = "<group>"; };
 		E75AC30C2A46750400E25297 /* ImagesListService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagesListService.swift; sourceTree = "<group>"; };
 		E75AC30D2A46750400E25297 /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
-		E75AC30E2A46750400E25297 /* PhotoResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoResult.swift; sourceTree = "<group>"; };
 		E768ED662A2350FE0065ADE3 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E7784BBA2A278CF800461FDA /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		E7784BBD2A27969200461FDA /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
@@ -124,7 +122,6 @@
 				E79DAB4E2A2E42AF00501056 /* OAuth2 */,
 				E7B468C32A2F1C7F004FE60E /* SplashView */,
 				E7017D8F2A10FA4A00D6EEA9 /* Profile */,
-				E75AC30B2A46750400E25297 /* Image */,
 				E75529CE2A449A10001E6722 /* TabBarController */,
 				E72475742A0D4AC400118192 /* ImagesList */,
 				E7CAF5022A141E80002A44A0 /* SingleImageView */,
@@ -141,6 +138,8 @@
 			children = (
 				E72475752A0D4AC400118192 /* ImagesListViewController.swift */,
 				E72475762A0D4AC400118192 /* ImagesListCell.swift */,
+				E75AC30C2A46750400E25297 /* ImagesListService.swift */,
+				E75AC30D2A46750400E25297 /* Photo.swift */,
 			);
 			path = ImagesList;
 			sourceTree = "<group>";
@@ -162,16 +161,6 @@
 				E75529CC2A449A0C001E6722 /* TabBarController.swift */,
 			);
 			path = TabBarController;
-			sourceTree = "<group>";
-		};
-		E75AC30B2A46750400E25297 /* Image */ = {
-			isa = PBXGroup;
-			children = (
-				E75AC30D2A46750400E25297 /* Photo.swift */,
-				E75AC30E2A46750400E25297 /* PhotoResult.swift */,
-				E75AC30C2A46750400E25297 /* ImagesListService.swift */,
-			);
-			path = Image;
 			sourceTree = "<group>";
 		};
 		E7784BBC2A278D0000461FDA /* Auth */ = {
@@ -308,7 +297,6 @@
 				E70F494E2A2F2856007A13CA /* SplashViewController.swift in Sources */,
 				E716CEC82A3DFE5600639608 /* ProfileService.swift in Sources */,
 				E792758E2A4EB70500B01C65 /* ProfileImageService.swift in Sources */,
-				E75AC3112A46750400E25297 /* PhotoResult.swift in Sources */,
 				E73D88382A3F9C4400F21CEE /* AlertPresenter.swift in Sources */,
 				E75529CD2A449A0C001E6722 /* TabBarController.swift in Sources */,
 				E73D88362A3F9BE500F21CEE /* AlertModel.swift in Sources */,

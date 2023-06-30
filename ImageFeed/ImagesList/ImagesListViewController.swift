@@ -7,6 +7,9 @@ final class ImagesListViewController: UIViewController {
     private let photosNames: [String] = Array(0..<20).map{ "\($0)" }
     private let showSingleImageSegueIdentifier = "ShowSingleImage"
     
+    
+    private let imagesListService = ImagesListService.shared
+    
     private lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "ru_RU")
@@ -20,6 +23,7 @@ final class ImagesListViewController: UIViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        imagesListService.fetchPhotosNextPage()
     }
     // MARK: - lifestyle
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
