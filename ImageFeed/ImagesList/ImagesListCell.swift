@@ -1,12 +1,6 @@
-//
-//  ImagesListCell.swift
-//  ImageFeed
-//
-//  Created by Алексей Гвоздков on 04.05.2023.
-//
-
 import UIKit
 
+// MARK: - class ImagesListCell
 final class ImagesListCell: UITableViewCell {
     static let reuseIdentifier = "ImagesListCell"
     @IBOutlet var likeButton: UIButton!

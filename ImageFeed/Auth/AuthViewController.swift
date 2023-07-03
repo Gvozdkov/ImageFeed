@@ -1,40 +1,42 @@
-//
-//  AuthViewController.swift
-//  ImageFeed
-//
-//  Created by Алексей Гвоздков on 31.05.2023.
-//
-
 import UIKit
 
-//MARK: - protocol AuthViewControllerDelegate
-protocol AuthViewControllerDelegate: AnyObject {
-    func authViewController(_ vc: AuthViewController, didAuthenticateWithCode code: String)
+// MARK: - protocol AuthViewControllerDelegate
+protocol AuthViewControllerDelegate : AnyObject {
+    func authViewController(_ vc : AuthViewController, didAuthenticateWithCode code: String)
 }
 
-//MARK: - class AuthViewController
+// MARK: - class AuthViewController
 final class AuthViewController: UIViewController {
     private let showWebViewSegueIdentifier = "ShowWebView"
-    
     weak var delegate: AuthViewControllerDelegate?
     
+    // MARK: - life cycle
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard segue.identifier == showWebViewSegueIdentifier,
-              let webViewController = segue.destination as? WebViewController else {
+        if segue.identifier == showWebViewSegueIdentifier {
+            guard
+                let webViewViewController = segue.destination as?
+                    WebViewViewController
+            else { assertionFailure("Failed to prepare for: \(showWebViewSegueIdentifier)")
+                return
+            }
+            webViewViewController.delegate = self
+        } else {
             super.prepare(for: segue, sender: sender)
-            return
         }
-        webViewController.delegate = self
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
 }
-//MARK: - extension
-extension AuthViewController: WebViewControllerDelegate {
-    func webViewController(_ vc: WebViewController, didAuthenticateWithCode code: String) {
+
+// MARK: - Extension
+extension AuthViewController: WebViewViewControllerDelegate {
+    func webViewViewController(_ vc: WebViewViewController, didAuthenticateWithCode code: String) {
         delegate?.authViewController(self, didAuthenticateWithCode: code)
     }
-
     
-    func webViewControllerDidCancel(_ vc: WebViewController) {
+    func webViewViewControllerDidCancel(_ vc: WebViewViewController) {
         dismiss(animated: true)
     }
 }
