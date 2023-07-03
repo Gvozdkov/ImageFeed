@@ -46,7 +46,10 @@
                                                         <constraint firstAttribute="width" secondItem="rbF-QK-TIa" secondAttribute="height" multiplier="1:1" id="pdS-rH-jQ3"/>
                                                     </constraints>
                                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                    <state key="normal" image="like_button_on"/>
+                                                    <state key="normal" image="likeButtonOn"/>
+                                                    <connections>
+                                                        <action selector="likeButtonTapped:" destination="mZn-Sp-M8z" eventType="touchUpInside" id="OkK-R1-Ylp"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="27 августа 2022" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DSi-4D-A0i" userLabel="Data Label">
                                                     <rect key="frame" x="24" y="179" width="101.5" height="16"/>
@@ -384,7 +387,7 @@ YP White (iOS)</string>
         <image name="Logo" width="75" height="78"/>
         <image name="Sharing" width="50" height="50"/>
         <image name="auth_screen_logo" width="60" height="60"/>
-        <image name="like_button_on" width="42" height="42"/>
+        <image name="likeButtonOn" width="42" height="42"/>
         <image name="nav_back_button" width="9" height="16"/>
         <image name="nav_white_button" width="9" height="16"/>
         <image name="tab_editorial_active" width="30" height="30"/>
