@@ -1,10 +1,3 @@
-//
-//  ViewController.swift
-//  ImageFeed
-//
-//  Created by Алексей Гвоздков on 30.04.2023.
-//
-
 import UIKit
 
 // MARK: - class ImagesListViewController
@@ -14,6 +7,8 @@ final class ImagesListViewController: UIViewController {
     private let photosNames: [String] = Array(0..<20).map{ "\($0)" }
     private let showSingleImageSegueIdentifier = "ShowSingleImage"
     
+    private var imagesListServiceObserver: NSObjectProtocol?
+    
     private lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "ru_RU")
@@ -22,13 +17,25 @@ final class ImagesListViewController: UIViewController {
         return formatter
     }()
     
-    //MARK: - viewDidLoad
+    //MARK: - lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-    }
+        
+        imagesListServiceObserver = NotificationCenter.default.addObserver(
+                    forName: ImagesListService.didChangeNotification,
+                    object: nil,
+                    queue: .main
+                ) { [weak self] _ in
+                    guard let self = self else { return }
+                    self.updateImages()
+                }
+            }
     // MARK: - lifestyle
+    
+    private func updateImages() { }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == showSingleImageSegueIdentifier {
             let viewController = segue.destination as! SingleImageViewController
@@ -39,6 +46,9 @@ final class ImagesListViewController: UIViewController {
             super.prepare(for: segue, sender: sender)
         }
     }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
+    
 }
 
 //MARK: - extension
