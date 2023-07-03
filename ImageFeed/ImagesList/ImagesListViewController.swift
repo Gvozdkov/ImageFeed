@@ -101,7 +101,7 @@ extension ImagesListViewController {
             cell.dateLabel.text = ""
         }
         let isLiked = imagesListService.photos[indexPath.row].isLiked == false
-        let likeImage = isLiked ? UIImage(named: "likeButtonOn") : UIImage(named: "likeButtonOff")
+        let likeImage = isLiked ? UIImage(named: "likeButtonOff") : UIImage(named: "likeButtonOn")
         cell.likeButton.setImage(likeImage, for: .normal)
         cell.selectionStyle = .none
     }
