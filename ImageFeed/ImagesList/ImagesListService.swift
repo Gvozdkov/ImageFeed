@@ -65,6 +65,13 @@ final class ImagesListService {
                           largeImageURL: photoResult.urls?.largeImageURL,
                           isLiked: photoResult.isLiked ?? false)
     }
+    
+    func clean() {
+        photos = []
+        lastLoadedPage = nil
+        task?.cancel()
+        task = nil
+    }
 }
 
 // MARK: - extension
