@@ -11,7 +11,7 @@ final class OAuth2Service {
     // MARK: - lifestyle
     func fetchOAuthToken(_ code: String, completion: @escaping (Result<String, Error>) -> Void ) {
         assert(Thread.isMainThread)
-        if lastCode == code {return}
+        if lastCode == code { return }
         task?.cancel()
         lastCode = code
         
