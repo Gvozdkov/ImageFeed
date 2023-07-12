@@ -86,7 +86,7 @@ extension ImagesListViewController: UITableViewDelegate {
 
 extension ImagesListViewController {
     func configCell(for cell: ImagesListCell, with indexPath: IndexPath) {
-        let imageUrl = photos[indexPath.row].thumbImageURL!
+        guard let imageUrl = photos[indexPath.row].thumbImageURL else { return }
         let url = URL(string: imageUrl)
         let placeholder = UIImage(named: "Stub")
         cell.cellImage.kf.indicatorType = .activity
