@@ -188,7 +188,14 @@ extension ProfileViewController {
         ) { [weak self] _ in
             guard let self = self else { return }
             DispatchQueue.main.async {
-                self.onLogout()
+//                self.onLogout()
+                WebViewViewController.clean()
+                self.storageToken.clearToken()
+                self.cleanServicesData()
+                self.tabBarController?.dismiss(animated: true)
+                guard let window = UIApplication.shared.windows.first else {
+                    fatalError("Invalid Configuration") }
+                window.rootViewController = SplashViewController()
             }
         }
         
@@ -202,6 +209,12 @@ extension ProfileViewController {
         
         present(alert, animated: true)
 
+    }
+    
+    private func cleanServicesData() {
+        ImagesListService.shared.clean()
+        ProfileService.shared.clean()
+        ProfileImageService.shared.clean()
     }
 }
 

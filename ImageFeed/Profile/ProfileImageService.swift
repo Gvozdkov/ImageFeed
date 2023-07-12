@@ -41,6 +41,12 @@ final class ProfileImageService {
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         return request
     }
+    
+    func clean() {
+        avatarURL = nil
+        task?.cancel()
+        task = nil
+    }
 }
 
 // MARK: - struct UserResult

@@ -33,6 +33,15 @@ final class WebViewViewController: UIViewController {
         progressView.isHidden = fabs(webView.estimatedProgress - 1.0) <= 0.0001
     }
     
+    static func clean() {
+        HTTPCookieStorage.shared.removeCookies(since: Date.distantPast)
+        WKWebsiteDataStore.default().fetchDataRecords(ofTypes: WKWebsiteDataStore.allWebsiteDataTypes()) { records in
+            records.forEach { record in
+                WKWebsiteDataStore.default().removeData(ofTypes: record.dataTypes, for: [record], completionHandler: {})
+            }
+        }
+    }
+    
     @IBAction private func didTapBackButton(_ sender: Any) {
         delegate?.webViewViewControllerDidCancel(self)
     }
@@ -50,8 +59,10 @@ extension WebViewViewController: WKNavigationDelegate {
             decisionHandler(.allow)
         }
     }
-    
-    private func loadWebView() {
+}
+
+private extension WebViewViewController {
+    func loadWebView() {
         var components = URLComponents(string: APIConstants.authorizeURLString)
         components?.queryItems = [URLQueryItem(name: "client_id", value: APIConstants.accessKey),
                                   URLQueryItem(name: "redirect_uri", value: APIConstants.redirectURI),
@@ -62,8 +73,8 @@ extension WebViewViewController: WKNavigationDelegate {
             webView.load(request)
         }
     }
-    
-    private func fetchCode(from navigationAction: WKNavigationAction) -> String? {
+
+    func fetchCode(from navigationAction: WKNavigationAction) -> String? {
         if let url = navigationAction.request.url,
            let components = URLComponents(string: url.absoluteString),
            components.path == APIConstants.authorizationPath,
