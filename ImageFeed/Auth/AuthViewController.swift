@@ -40,7 +40,6 @@ extension AuthViewController: WebViewViewControllerDelegate {
         dismiss(animated: true) { [weak self] in
             guard let self = self else { return }
             delegate?.authViewController(self, didAuthenticateWithCode: code)
-            //        delegate?.authViewController(self, didAuthenticateWithCode: code)
         }
     }
     
