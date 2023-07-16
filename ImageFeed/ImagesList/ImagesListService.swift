@@ -37,6 +37,7 @@ final class ImagesListService {
                             userInfo: ["Images" : self.photos])
                 case .failure(let error):
                     assertionFailure("Ошибка получения изображений \(error)")
+                    return
                 }
                 self.task = nil
             }
