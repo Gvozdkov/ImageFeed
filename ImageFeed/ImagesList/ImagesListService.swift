@@ -17,7 +17,7 @@ final class ImagesListService {
     func fetchPhotosNextPage() {
         assert(Thread.isMainThread)
         guard task == nil else { return }
-        
+
         let page = lastLoadedPage == nil ? 1 : lastLoadedPage! + 1
         guard let token = storageToken.token else { return }
         guard let request = fetchImagesListRequest(token, page: String(page), perPage: perPage) else { return }

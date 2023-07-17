@@ -62,6 +62,7 @@ YP White (iOS)</string>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rbF-QK-TIa" userLabel="Like Button">
                                                     <rect key="frame" x="354" y="4" width="44" height="44"/>
+                                                    <accessibility key="accessibilityConfiguration" identifier="likeButton"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="44" id="0dN-M5-DIC"/>
                                                         <constraint firstAttribute="width" secondItem="rbF-QK-TIa" secondAttribute="height" multiplier="1:1" id="pdS-rH-jQ3"/>
@@ -125,7 +126,7 @@ YP White (iOS)</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-830" y="-234"/>
+            <point key="canvasLocation" x="-830.43478260869574" y="-234.375"/>
         </scene>
         <!--Single Image View Controller-->
         <scene sceneID="yWR-Ve-u94">
@@ -217,12 +218,13 @@ YP White (iOS)</string>
                                     <constraint firstAttribute="width" constant="60" id="TEB-zY-4r3"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0hF-so-x4A">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0hF-so-x4A" userLabel="LoginButton">
                                 <rect key="frame" x="16" y="724" width="382" height="48"/>
                                 <color key="backgroundColor">
                                     <string key="name">
 YP White (iOS)</string>
                                 </color>
+                                <accessibility key="accessibilityConfiguration" identifier="Authenticate"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="MOY-1u-g2B"/>
                                 </constraints>
@@ -273,6 +275,9 @@ YP White (iOS)</string>
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
                                     <wkPreferences key="preferences"/>
                                 </wkWebViewConfiguration>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="UnsplashWebView"/>
+                                </userDefinedRuntimeAttributes>
                             </wkWebView>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="gtj-DL-9Hj">
                                 <rect key="frame" x="0.0" y="40" width="414" height="4"/>

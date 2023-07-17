@@ -1,7 +1,7 @@
 @testable import ImageFeed
 import XCTest
 
-final class Image_FeedTests: XCTestCase {
+final class ImageFeedTests: XCTestCase {
 
     func testViewControllerCallsViewDidLoad() {
         //given
@@ -33,8 +33,7 @@ final class Image_FeedTests: XCTestCase {
         XCTAssertTrue(viewController.loadRequestCalled)
     }
     
-    func
-    () {
+    func testProgressVisibleWhenLessThenOne() {
         //given
         let authHelper = AuthHelper()
         let presenter = WebViewPresenter(authHelper: authHelper)
