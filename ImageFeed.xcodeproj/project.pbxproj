@@ -26,7 +26,7 @@
 		E75529CD2A449A0C001E6722 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75529CC2A449A0C001E6722 /* TabBarController.swift */; };
 		E75AC30A2A46710500E25297 /* AnimationGradientFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75AC3092A46710500E25297 /* AnimationGradientFactory.swift */; };
 		E75AC30F2A46750400E25297 /* ImagesListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75AC30C2A46750400E25297 /* ImagesListService.swift */; };
-		E75AC3102A46750400E25297 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75AC30D2A46750400E25297 /* Photo.swift */; };
+		E7661FA72A6867640049A0A7 /* ImagesListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7661FA62A6867640049A0A7 /* ImagesListPresenter.swift */; };
 		E768ED672A2350FE0065ADE3 /* AuthConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E768ED662A2350FE0065ADE3 /* AuthConfiguration.swift */; };
 		E7784BBB2A278CF800461FDA /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7784BBA2A278CF800461FDA /* AuthViewController.swift */; };
 		E7784BBE2A27969200461FDA /* WebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7784BBD2A27969200461FDA /* WebViewViewController.swift */; };
@@ -97,7 +97,7 @@
 		E75529CC2A449A0C001E6722 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		E75AC3092A46710500E25297 /* AnimationGradientFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationGradientFactory.swift; sourceTree = "<group>"; };
 		E75AC30C2A46750400E25297 /* ImagesListService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagesListService.swift; sourceTree = "<group>"; };
-		E75AC30D2A46750400E25297 /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		E7661FA62A6867640049A0A7 /* ImagesListPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagesListPresenter.swift; sourceTree = "<group>"; };
 		E768ED662A2350FE0065ADE3 /* AuthConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthConfiguration.swift; sourceTree = "<group>"; };
 		E7784BBA2A278CF800461FDA /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		E7784BBD2A27969200461FDA /* WebViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewViewController.swift; sourceTree = "<group>"; };
@@ -224,7 +224,7 @@
 				E72475752A0D4AC400118192 /* ImagesListViewController.swift */,
 				E75AC30C2A46750400E25297 /* ImagesListService.swift */,
 				E7945EBB2A570C52006D48D2 /* ImagesListCell.swift */,
-				E75AC30D2A46750400E25297 /* Photo.swift */,
+				E7661FA62A6867640049A0A7 /* ImagesListPresenter.swift */,
 			);
 			path = ImagesList;
 			sourceTree = "<group>";
@@ -517,7 +517,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E72475612A0D49C400118192 /* AppDelegate.swift in Sources */,
-				E75AC3102A46750400E25297 /* Photo.swift in Sources */,
 				E78D841F2A4C7A180000EDD8 /* OAuth2Service.swift in Sources */,
 				E7017D912A10FA6B00D6EEA9 /* ProfileViewController.swift in Sources */,
 				E70F494E2A2F2856007A13CA /* SplashViewController.swift in Sources */,
@@ -532,6 +531,7 @@
 				E768ED672A2350FE0065ADE3 /* AuthConfiguration.swift in Sources */,
 				E73D883A2A3F9C7E00F21CEE /* AlertPresenterProtocol.swift in Sources */,
 				E7CAF5012A141ADD002A44A0 /* SingleImageViewController.swift in Sources */,
+				E7661FA72A6867640049A0A7 /* ImagesListPresenter.swift in Sources */,
 				E7784BBE2A27969200461FDA /* WebViewViewController.swift in Sources */,
 				E7945EBC2A570C52006D48D2 /* ImagesListCell.swift in Sources */,
 				E75AC30A2A46710500E25297 /* AnimationGradientFactory.swift in Sources */,

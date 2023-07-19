@@ -1,18 +1,17 @@
 import UIKit
 
-// MARK: - ImagesListCellDelegate
+//MARK: - protocol ImagesListCellDelegate
 protocol ImagesListCellDelegate: AnyObject {
     func imageListCellDidTapLike(_ cell: ImagesListCell)
 }
 
-// MARK: - class ImagesListCell
+//MARK: - class ImagesListCell
 final class ImagesListCell: UITableViewCell {
     static let reuseIdentifier = "ImagesListCell"
     weak var delegate: ImagesListCellDelegate?
+    @IBOutlet var cellImage: UIImageView!
     @IBOutlet var likeButton: UIButton!
     @IBOutlet var dateLabel: UILabel!
-    @IBOutlet var cellImage: UIImageView!
-    
     @IBAction private func likeButtonTapped(_ sender: UIButton) {
         delegate?.imageListCellDidTapLike(self)
     }
@@ -22,9 +21,10 @@ final class ImagesListCell: UITableViewCell {
         cellImage.kf.cancelDownloadTask()
     }
     
-    public func setIsLiked(isLiked: Bool) {
+    func setIsLiked(isLiked: Bool) {
         let likeImage = isLiked ? UIImage(named: "likeButtonOn") : UIImage(named: "likeButtonOff")
         likeButton.imageView?.image = likeImage
         likeButton.setImage(likeImage, for: .normal)
     }
 }
+
