@@ -169,6 +169,7 @@ YP White (iOS)</string>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ADt-8w-OtD" userLabel="BackButton">
                                 <rect key="frame" x="8" y="8" width="48" height="48"/>
+                                <accessibility key="accessibilityConfiguration" identifier="backButton"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="H44-Tb-CLV"/>
                                     <constraint firstAttribute="width" constant="48" id="yRT-Ui-VIg"/>
