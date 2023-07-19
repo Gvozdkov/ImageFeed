@@ -27,6 +27,9 @@
 		E75AC30A2A46710500E25297 /* AnimationGradientFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75AC3092A46710500E25297 /* AnimationGradientFactory.swift */; };
 		E75AC30F2A46750400E25297 /* ImagesListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75AC30C2A46750400E25297 /* ImagesListService.swift */; };
 		E7661FA72A6867640049A0A7 /* ImagesListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7661FA62A6867640049A0A7 /* ImagesListPresenter.swift */; };
+		E7661FAB2A686E0A0049A0A7 /* ImageListViewControllerSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7661FA82A686E0A0049A0A7 /* ImageListViewControllerSpy.swift */; };
+		E7661FAC2A686E0A0049A0A7 /* ImageListPresenterSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7661FA92A686E0A0049A0A7 /* ImageListPresenterSpy.swift */; };
+		E7661FAD2A686E0A0049A0A7 /* ImagesListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7661FAA2A686E0A0049A0A7 /* ImagesListTests.swift */; };
 		E768ED672A2350FE0065ADE3 /* AuthConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E768ED662A2350FE0065ADE3 /* AuthConfiguration.swift */; };
 		E7784BBB2A278CF800461FDA /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7784BBA2A278CF800461FDA /* AuthViewController.swift */; };
 		E7784BBE2A27969200461FDA /* WebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7784BBD2A27969200461FDA /* WebViewViewController.swift */; };
@@ -98,6 +101,9 @@
 		E75AC3092A46710500E25297 /* AnimationGradientFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationGradientFactory.swift; sourceTree = "<group>"; };
 		E75AC30C2A46750400E25297 /* ImagesListService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagesListService.swift; sourceTree = "<group>"; };
 		E7661FA62A6867640049A0A7 /* ImagesListPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagesListPresenter.swift; sourceTree = "<group>"; };
+		E7661FA82A686E0A0049A0A7 /* ImageListViewControllerSpy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageListViewControllerSpy.swift; sourceTree = "<group>"; };
+		E7661FA92A686E0A0049A0A7 /* ImageListPresenterSpy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageListPresenterSpy.swift; sourceTree = "<group>"; };
+		E7661FAA2A686E0A0049A0A7 /* ImagesListTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagesListTests.swift; sourceTree = "<group>"; };
 		E768ED662A2350FE0065ADE3 /* AuthConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthConfiguration.swift; sourceTree = "<group>"; };
 		E7784BBA2A278CF800461FDA /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		E7784BBD2A27969200461FDA /* WebViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewViewController.swift; sourceTree = "<group>"; };
@@ -265,6 +271,9 @@
 				E7D1043A2A6476960089815A /* WebViewPresenterSpy.swift */,
 				E7D104422A6478450089815A /* WebViewViewControllerSpy.swift */,
 				E7D1042C2A6475140089815A /* WebViewTests.swift */,
+				E7661FA92A686E0A0049A0A7 /* ImageListPresenterSpy.swift */,
+				E7661FA82A686E0A0049A0A7 /* ImageListViewControllerSpy.swift */,
+				E7661FAA2A686E0A0049A0A7 /* ImagesListTests.swift */,
 			);
 			path = ImageFeedTests;
 			sourceTree = "<group>";
@@ -550,7 +559,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7851A2B2A4F1B05004E55F5 /* ImagesListServiceTests.swift in Sources */,
+				E7661FAC2A686E0A0049A0A7 /* ImageListPresenterSpy.swift in Sources */,
 				E7D104432A6478450089815A /* WebViewViewControllerSpy.swift in Sources */,
+				E7661FAB2A686E0A0049A0A7 /* ImageListViewControllerSpy.swift in Sources */,
+				E7661FAD2A686E0A0049A0A7 /* ImagesListTests.swift in Sources */,
 				E7D104332A6475680089815A /* WebViewTests.swift in Sources */,
 				E7D104412A6476AB0089815A /* WebViewPresenterSpy.swift in Sources */,
 			);
