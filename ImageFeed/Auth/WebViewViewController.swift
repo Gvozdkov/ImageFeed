@@ -38,7 +38,8 @@ final class WebViewViewController: UIViewController & WebViewViewControllerProto
     }
     // MARK: - lifestyle
     func setProgressValue(_ newValue: Float) {
-        progressView.progress = newValue
+//        progressView.progress = newValue
+        progressView.setProgress(newValue, animated: false)
     }
     
     func setProgressHidden(_ isHidden: Bool) {
