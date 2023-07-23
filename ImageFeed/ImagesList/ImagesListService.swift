@@ -1,19 +1,80 @@
 import Foundation
 
-// MARK: - class ImagesListService
-final class ImagesListService {
-    static let didChangeNotification = Notification.Name(rawValue: "ImagesListServiceDidChange")
-    static let shared = ImagesListService()
-    private let storageToken = OAuth2TokenStorage()
-    private let dateFormatter = ISO8601DateFormatter()
-    private var task: URLSessionTask?
+//MARK: - struct PhotoResult
+struct PhotoResult: Decodable {
+    let id: String
+    let createdAt: String?
+    let welcomeDescription: String?
+    let isLiked: Bool?
+    let urls: ImageUrlsResult?
+    let width: CGFloat
+    let height: CGFloat
     
+    enum CodingKeys: String, CodingKey {
+        case id = "id"
+        case createdAt = "created_at"
+        case welcomeDescription = "description"
+        case isLiked = "liked_by_user"
+        case urls = "urls"
+        case width = "width"
+        case height = "height"
+    }
+}
+
+//MARK: - struct ImageUrlsResult
+struct ImageUrlsResult: Decodable {
+    let thumbImageURL: String?
+    let largeImageURL: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case thumbImageURL = "thumb"
+        case largeImageURL = "full"
+    }
+}
+
+//MARK: - struct Photo
+struct Photo {
+    let id: String
+    let width: CGFloat
+    let height: CGFloat
+    let createdAt: Date?
+    let welcomeDescription: String?
+    let thumbImageURL: String?
+    let largeImageURL: String?
+    let isLiked: Bool
+}
+
+//MARK: - struct LikePhotoResult
+struct LikePhotoResult: Decodable {
+    let photo: PhotoResult?
+}
+
+//MARK: - class ImagesListService
+final class ImagesListService {
+    static let DidChangeNotification = Notification.Name(rawValue: "ImagesListServiceDidChange")
+    static let shared = ImagesListService()
     private (set) var photos: [Photo] = []
     private var lastLoadedPage: Int?
     private let perPage = "10"
+    private var task: URLSessionTask?
+    private let storageToken = OAuth2TokenStorage()
+    private let dateFormatter = ISO8601DateFormatter()
     
+    func updatePhotos(_ photos: [Photo]) {
+        self.photos = photos
+    }
     
-    // MARK: - lifestyle
+    func clean() {
+        photos = []
+        lastLoadedPage = nil
+        task?.cancel()
+        task = nil
+    }
+}
+
+//MARK: - extension
+extension ImagesListService {
+    
     func fetchPhotosNextPage() {
         assert(Thread.isMainThread)
         guard task == nil else { return }
@@ -32,7 +93,7 @@ final class ImagesListService {
                     self.lastLoadedPage = page
                     NotificationCenter.default
                         .post(
-                            name: ImagesListService.didChangeNotification,
+                            name: ImagesListService.DidChangeNotification,
                             object: self,
                             userInfo: ["Images" : self.photos])
                 case .failure(let error):
@@ -43,15 +104,6 @@ final class ImagesListService {
         }
         self.task = task
         task.resume()
-    }
-    
-    private func fetchImagesListRequest(_ token: String, page: String, perPage: String) -> URLRequest? {
-        var request = URLRequest.makeHTTPRequest(
-            path: "/photos?page=\(page)&&per_page=\(perPage)",
-            httpMethod: "GET",
-            baseURL: URL(string: "\(APIConstants.defaultBaseURL)")!)
-        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-        return request
     }
     
     private func convert(_ photoResult: PhotoResult) -> Photo {
@@ -66,16 +118,15 @@ final class ImagesListService {
                           isLiked: photoResult.isLiked ?? false)
     }
     
-    func clean() {
-        photos = []
-        lastLoadedPage = nil
-        task?.cancel()
-        task = nil
+    private func fetchImagesListRequest(_ token: String, page: String, perPage: String) -> URLRequest? {
+        var request = URLRequest.makeHTTPRequest(
+            path: "/photos?page=\(page)&&per_page=\(perPage)",
+            httpMethod: "GET",
+            baseURL: URL(string: "\(APIConstants.defaultBaseURL)")!)
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        return request
     }
-}
-
-// MARK: - extension
-extension ImagesListService {
+    
     func changeLike(photoId: String, isLike: Bool, _ completion: @escaping (Result<Void, Error>) -> Void) {
         assert(Thread.isMainThread)
         task?.cancel()

@@ -65,6 +65,8 @@ final class ProfileViewController: UIViewController {
         return button
     }()
     
+    override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
+    
     // MARK: - lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,8 +77,6 @@ final class ProfileViewController: UIViewController {
         updateProfileDetails(profile: profile)
         observeAvatarChanges()
     }
-    
-    override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
 }
 
 // MARK: - extension
@@ -132,7 +132,6 @@ extension ProfileViewController {
         self.labelDescription.layer.addSublayer(gradientDescriptionLabel)
         
         gradientProfileImage = animationGradient.createGradient(width: 70, height: 70, cornerRadius: 35)
-//        self.viewProfileImage.layer.addSublayer(gradientProfileImage)
     }
     
     private func updateProfileDetails(profile: Profile?) {
@@ -188,7 +187,6 @@ extension ProfileViewController {
         ) { [weak self] _ in
             guard let self = self else { return }
             DispatchQueue.main.async {
-//                self.onLogout()
                 WebViewViewController.clean()
                 self.storageToken.clearToken()
                 self.cleanServicesData()
@@ -217,4 +215,3 @@ extension ProfileViewController {
         ProfileImageService.shared.clean()
     }
 }
-
