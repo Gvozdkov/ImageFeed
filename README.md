@@ -6,12 +6,6 @@
 Unsplash API - [посмотреть](https://unsplash.com/documentation)    
 Скринкаст работы приложения - [посмотреть](https://disk.yandex.ru/i/ilnZaopw9QOV2A)     
 
-# Изображения
-![Изображение 1](imageFeed1.png)  
-![Изображение 2](imageFeed2.png)  
-![Изображение 3](imageFeed3.png)  
-![Изображение 4](imageFeed4.png)  
-
 # Назначение и цели приложения
 
 Многостраничное приложение предназначено для просмотра изображений через API Unsplash.
