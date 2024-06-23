@@ -1,6 +1,3 @@
-**Связаться со мной можно в телеграмм**
-@aagvozdkov
-
 # Image Feed
 
 
@@ -13,6 +10,9 @@ https://github.com/Gvozdkov/ImageFeed/assets/124888518/8399fd43-88f4-43f9-8d1d-b
 Дизайн в Figma - [посмотреть](https://tinyurl.com/image-feed-figma)   
 Unsplash API - [посмотреть](https://unsplash.com/documentation)    
 Скринкаст работы приложения - [посмотреть](https://disk.yandex.ru/i/ilnZaopw9QOV2A)     
+
+**Связаться со мной можно в телеграмм**
+@aagvozdkov
 
 # Назначение и цели приложения
 
